@@ -13,11 +13,29 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Utils">
-      <UniqueIdentifier>{efe3a1ac-3ce9-464d-8935-a7afcaa86264}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Utilities">
       <UniqueIdentifier>{12aefe1c-dd7e-4391-a643-78ee3d01d8e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Actors">
+      <UniqueIdentifier>{979b1ac3-4343-44ae-831e-ad972e7b5022}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\GameManagers">
+      <UniqueIdentifier>{9714b713-71b5-4459-802b-cb01e2d10212}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\GameManagers">
+      <UniqueIdentifier>{1348f73f-da5f-4095-a6d6-803981495a58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Actors">
+      <UniqueIdentifier>{9b17b2e9-cdd8-469e-a4e2-ea270c8fbf26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Renderers">
+      <UniqueIdentifier>{8a1bd231-d52c-4803-930b-b27153acdbc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Interfaces">
+      <UniqueIdentifier>{18586c79-0900-42ec-9b67-85ae25237cf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Renderers">
+      <UniqueIdentifier>{85cf12e7-5529-4d76-882e-dead6739ff7a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -25,36 +43,48 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CRGameSystem.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CRMapCreator.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="CRConsoleRenderer.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\GameManagers</Filter>
     </ClCompile>
     <ClCompile Include="CRGameManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="CRActor.cpp">
+      <Filter>소스 파일\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="CRConsoleUI.cpp">
+      <Filter>소스 파일\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="CRConsoleRenderer.cpp">
+      <Filter>소스 파일\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CREventManager.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Singleton.h">
       <Filter>헤더 파일\Utilities</Filter>
     </ClInclude>
-    <ClInclude Include="CRGameSystem.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CRMapCreator.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="CRConsoleRenderer.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="CREventManager.h">
+      <Filter>헤더 파일\GameManagers</Filter>
     </ClInclude>
     <ClInclude Include="CRGameManager.h">
+      <Filter>헤더 파일\GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRGameSystem.h">
+      <Filter>헤더 파일\GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="ICRCombat.h">
+      <Filter>헤더 파일\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleRPG.h">
       <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CRActor.h">
+      <Filter>헤더 파일\Actors</Filter>
+    </ClInclude>
+    <ClInclude Include="CRConsoleUI.h">
+      <Filter>헤더 파일\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRConsoleRenderer.h">
+      <Filter>헤더 파일\Renderers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

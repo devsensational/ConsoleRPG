@@ -9,10 +9,11 @@ using namespace std;
 class CRConsoleRenderer
 {
 public:
-	void RenderMap(shared_ptr<vector<vector<int>>>& grid);
-	void Print(const string& str);
-	void PrintLine(const string& str);
+	void PrintBuffer();
+	void AddBuffer(shared_ptr<string> strPtr);
+	void Clear();
 
-
+private:
+	vector<shared_ptr<string>> buffer;
 };
 

@@ -1,21 +1,25 @@
+#include <iostream>
+#include <windows.h>
+
 #include "CRConsoleRenderer.h"
 
-void CRConsoleRenderer::RenderMap(shared_ptr<vector<vector<int>>>& grid)
+using namespace std;
+
+void CRConsoleRenderer::PrintBuffer()
 {
-    for (const auto& row : *grid) {
-        for (int val : row) {
-            cout << "бс";
-        }
-        cout << '\n';
-    }
+	system("cls");
+	for (const auto& str : buffer)
+	{
+		cout << *str << '\n';
+	}
 }
 
-void CRConsoleRenderer::Print(const string& str)
+void CRConsoleRenderer::AddBuffer(shared_ptr<string> strPtr)
 {
-    cout << str;
+	buffer.push_back(strPtr);
 }
 
-void CRConsoleRenderer::PrintLine(const string& str)
+void CRConsoleRenderer::Clear()
 {
-    cout << str << '\n';
+	buffer.clear();
 }
