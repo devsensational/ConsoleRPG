@@ -37,6 +37,9 @@
     <Filter Include="헤더 파일\Renderers">
       <UniqueIdentifier>{85cf12e7-5529-4d76-882e-dead6739ff7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Monster">
+      <UniqueIdentifier>{fbba36a6-7108-4aba-9f77-093764892190}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CRMain.cpp">
@@ -56,6 +59,15 @@
     </ClCompile>
     <ClCompile Include="CRConsoleRenderer.cpp">
       <Filter>소스 파일\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="CROrc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRSlime.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Troll.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +97,21 @@
     </ClInclude>
     <ClInclude Include="CRConsoleRenderer.h">
       <Filter>헤더 파일\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="ICRMonsterbase.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CRGoblin.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CROrc.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="CRSlime.h">
+      <Filter>헤더 파일\Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Troll.h">
+      <Filter>헤더 파일\Monster</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
