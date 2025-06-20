@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include "ConsoleRPG.h"
 
 using namespace std;
 
@@ -14,7 +15,7 @@ template<typename... Args>
 class CREventManager
 {
 public:
-    using Callback = std::function<void(Args...)>;
+    using Callback = function<void(Args...)>;
     using ListenerID = int;
 
     struct Listener
@@ -24,7 +25,7 @@ public:
     };
 
     // 콜백 등록, 고유 ID 반환
-    ListenerID Subscribe(const std::string& eventName, Callback callback)
+    ListenerID Subscribe(const EventType& eventName, Callback callback)
     {
         ListenerID id = nextId++;
         listeners[eventName].push_back({ id, callback });
@@ -32,16 +33,16 @@ public:
     }
 
     // 콜백 제거
-    void Unsubscribe(const std::string& eventName, ListenerID id)
+    void Unsubscribe(const EventType& eventName, ListenerID id)
     {
         auto& vec = listeners[eventName];
-        vec.erase(std::remove_if(vec.begin(), vec.end(),
+        vec.erase(remove_if(vec.begin(), vec.end(),
             [id](const Listener& l) { return l.id == id; }),
             vec.end());
     }
 
     // 이벤트 발생
-    void Broadcast(const std::string& eventName, Args... args)
+    void Broadcast(const EventType& eventName, Args... args)
     {
         auto it = listeners.find(eventName);
         if (it != listeners.end())
@@ -54,7 +55,7 @@ public:
     }
 
 private:
-    std::unordered_map<std::string, std::vector<Listener>> listeners;
+    unordered_map<EventType, vector<Listener>> listeners;
     ListenerID nextId = 0;
 };
 

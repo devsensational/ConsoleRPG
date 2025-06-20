@@ -3,7 +3,6 @@
 #include <iostream>
 
 #include "Singleton.h"
-#include "CREventManager.h"
 #include "CRGameSystem.h"
 
 int main()

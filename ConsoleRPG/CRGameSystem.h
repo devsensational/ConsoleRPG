@@ -5,7 +5,7 @@
 
 #include "CRConsoleRenderer.h"
 #include "CRGameManager.h"
-#include "CRMapCreator.h"
+#include "ICRCombat.h"
 
 using namespace std;
 
@@ -17,7 +17,7 @@ public:
 private:
 	bool bEndSignal = false;
 
-	unique_ptr<CRMapCreator> mapCreator;
+	vector<shared_ptr<ICRCombat>> CombatSequence;
 
 public:
 	CRGameSystem();
@@ -25,5 +25,11 @@ public:
 	void GameStart();	// 게임 초기화 및 LIfecycle 시작
 	void LIfecycle();	// 게임 생명 주기
 	void GameEnd();		// 게임 종료
+
+	/* 전투 관련 섹션 */
+protected:
+	void CombatInit();
+	void CombatStart();
+	void CombatEnd();
 };
 
