@@ -7,6 +7,7 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include "ConsoleRPG.h"
 
 using namespace std;
 
@@ -24,7 +25,7 @@ public:
     };
 
     // 콜백 등록, 고유 ID 반환
-    ListenerID Subscribe(const string& eventName, Callback callback)
+    ListenerID Subscribe(const EventType& eventName, Callback callback)
     {
         ListenerID id = nextId++;
         listeners[eventName].push_back({ id, callback });
@@ -32,7 +33,7 @@ public:
     }
 
     // 콜백 제거
-    void Unsubscribe(const string& eventName, ListenerID id)
+    void Unsubscribe(const EventType& eventName, ListenerID id)
     {
         auto& vec = listeners[eventName];
         vec.erase(remove_if(vec.begin(), vec.end(),
@@ -41,7 +42,7 @@ public:
     }
 
     // 이벤트 발생
-    void Broadcast(const string& eventName, Args... args)
+    void Broadcast(const EventType& eventName, Args... args)
     {
         auto it = listeners.find(eventName);
         if (it != listeners.end())
@@ -54,7 +55,7 @@ public:
     }
 
 private:
-    unordered_map<string, vector<Listener>> listeners;
+    unordered_map<EventType, vector<Listener>> listeners;
     ListenerID nextId = 0;
 };
 

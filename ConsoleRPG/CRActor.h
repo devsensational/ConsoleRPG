@@ -4,12 +4,16 @@
 #include "Singleton.h"
 #include "CRConsoleRenderer.h"
 
+//예시
 class CRActor: public ICRCombat
 {
 public:
 	CRActor();
-	// ICRCombat을(를) 통해 상속됨
+
 	virtual void Attack() override;
-	virtual void TakeDamage() override;
+	virtual void TakeDamage(int value);
+
+private:
+	int hp = 100;
 };
 
