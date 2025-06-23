@@ -1,10 +1,11 @@
-#pragma once
+ï»¿#pragma once
 
 #include <memory>
 #include <vector>
 
 #include "CRConsoleRenderer.h"
-#include "CRGameManager.h"
+#include "CRGameMode.h"
+#include "CRConsoleUI.h"
 #include "ICRCombat.h"
 
 using namespace std;
@@ -12,24 +13,21 @@ using namespace std;
 class CRGameSystem
 {
 public:
-	shared_ptr<vector<vector<int>>> grid;
+	CRGameSystem();
 
+	/* ìƒëª…ì£¼ê¸° ì„¹ì…˜ */
 private:
 	bool bEndSignal = false;
 
-	vector<shared_ptr<ICRCombat>> CombatSequence;
-
 public:
-	CRGameSystem();
 	
-	void GameStart();	// °ÔÀÓ ÃÊ±âÈ­ ¹× LIfecycle ½ÃÀÛ
-	void LIfecycle();	// °ÔÀÓ »ı¸í ÁÖ±â
-	void GameEnd();		// °ÔÀÓ Á¾·á
+	void GameStart();	// ê²Œì„ ì´ˆê¸°í™” ë° LIfecycle ì‹œì‘
+	void LIfecycle();	// ê²Œì„ ìƒëª… ì£¼ê¸°
+	void GameEnd();		// ê²Œì„ ì¢…ë£Œ
 
-	/* ÀüÅõ °ü·Ã ¼½¼Ç */
-protected:
-	void CombatInit();
-	void CombatStart();
-	void CombatEnd();
+	/* ê²Œì„ ë§¤ë‹ˆì € ì„¹ì…˜ */
+private:
+	unique_ptr<CRGameMode> GameMode = make_unique<CRGameMode>();
+	unique_ptr<CRConsoleUI> GameConsoleUI = make_unique<CRConsoleUI>();
 };
 

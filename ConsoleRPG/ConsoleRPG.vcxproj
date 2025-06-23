@@ -131,7 +131,7 @@
     <ClCompile Include="CRActor.cpp" />
     <ClCompile Include="CRConsoleRenderer.cpp" />
     <ClCompile Include="CRConsoleUI.cpp" />
-    <ClCompile Include="CRGameManager.cpp" />
+    <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRMain.cpp" />
   </ItemGroup>
@@ -141,7 +141,7 @@
     <ClInclude Include="CRConsoleRenderer.h" />
     <ClInclude Include="CRConsoleUI.h" />
     <ClInclude Include="CREventManager.h" />
-    <ClInclude Include="CRGameManager.h" />
+    <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
     <ClInclude Include="ICRCombat.h" />
     <ClInclude Include="Singleton.h" />
