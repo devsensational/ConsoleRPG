@@ -9,12 +9,4 @@ class Slime :public MonsterBase
 {
 public:
 	Slime(int level);
-	int MonsterRandHealth(int level)
-	{
-		return level * (25 + randHealth);
-	}
-	int MonsterRandAttack(int level)
-	{
-		return level * (3 + randAttack);
-	}
 };

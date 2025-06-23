@@ -135,6 +135,7 @@
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRGoblin.cpp" />
     <ClCompile Include="CRMain.cpp" />
+    <ClCompile Include="CRMonsterBase.cpp" />
     <ClCompile Include="CROrc.cpp" />
     <ClCompile Include="CRSlime.cpp" />
     <ClCompile Include="Troll.cpp" />

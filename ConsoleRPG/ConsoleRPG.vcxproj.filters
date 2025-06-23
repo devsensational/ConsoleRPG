@@ -93,6 +93,9 @@
     <ClCompile Include="TrollKing.cpp">
       <Filter>헤더 파일\Monster\BossMonster</Filter>
     </ClCompile>
+    <ClCompile Include="CRMonsterBase.cpp">
+      <Filter>헤더 파일\Monster\MonsterInterface</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Singleton.h">
