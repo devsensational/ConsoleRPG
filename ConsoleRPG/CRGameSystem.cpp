@@ -76,7 +76,7 @@ void CRGameSystem::CombatStart()
 	for (int i = 0; i < CombatSequence.size(); i++)
 	{
 		CombatSequence[i]->Attack();
-		Singleton<CREventManager<int>>::GetInstance().Broadcast(EventType::CharacterTakeDamage, 50);
+		Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_CharacterTakeDamage, 50);
 	}
 }
 
