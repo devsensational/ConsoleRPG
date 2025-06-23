@@ -1,6 +1,9 @@
 #include "CRHealPotion.h"
 #include <iostream>
 
+#include "CRCharacter.h"
+
+
 using namespace std;
 
 void CRHealPotion::use(CRCharacter* character) 

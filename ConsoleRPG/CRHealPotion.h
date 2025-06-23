@@ -1,5 +1,6 @@
 #pragma once
 #include "CRItem.h"
+#include "CRCharacter.h"
 
 class CRHealPotion : public CRItem 
 {

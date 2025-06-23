@@ -1,5 +1,9 @@
-#include "CRAttackBoost.h"
 #include <iostream>
+
+
+#include "CRCharacter.h"
+
+#include "CRAttackBoost.h"
 
 using namespace std;
 

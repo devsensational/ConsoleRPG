@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
+
 using namespace std;
 
 CRGameManager* CRGameManager::instance = nullptr;
@@ -18,15 +19,18 @@ void CRGameManager::startGame() {
     cout << "게임을 시작합니다!" << endl;
 }
 
-void CRGameManager::showCharacterStatus(CRCharacter* character) {
+void CRGameManager::showCharacterStatus(CRCharacter* character) 
+{
     character->showStatus();
 }
 
-void CRGameManager::startBattle(CRCharacter* character) {
+void CRGameManager::startBattle(CRCharacter* character) 
+{
     cout << "전투가 시작되었습니다!" << endl;
 
     // 몬스터 랜덤 생성
-    srand(time(0));
+    srand(static_cast<unsigned int>(time(0)));
+
     string monsterName = "Goblin";
     int monsterHealth = rand() % 10 + 20;
     int monsterAttack = rand() % 5 + 5;
@@ -45,13 +49,15 @@ void CRGameManager::startBattle(CRCharacter* character) {
     }
 }
 
-void CRGameManager::battleRound(CRCharacter* character, CRCharacter* monster) {
+void CRGameManager::battleRound(CRCharacter* character, CRCharacter* monster) 
+{
     // 플레이어 공격
     monster->takeDamage(character->getAttack());
     cout << character->getName() << "이(가) " << monster->getName() << "을(를) 공격합니다!" << endl;
     cout << monster->getName() << " 체력: " << monster->getHealth() << endl;
 
-    if (monster->getHealth() <= 0) {
+    if (monster->getHealth() <= 0) 
+    {
         cout << monster->getName() << " 처치!" << endl;
         return;
     }
