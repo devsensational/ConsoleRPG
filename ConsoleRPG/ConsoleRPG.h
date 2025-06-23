@@ -11,7 +11,7 @@ enum EEventType
 	/*
 	*	몬스터가 데미지를 받을 때 호출
 	*/
-	EET_MonsterTakeDamage, 
+	EET_MonsterTakeDamage,
 	
 
 	EET_END = 99,

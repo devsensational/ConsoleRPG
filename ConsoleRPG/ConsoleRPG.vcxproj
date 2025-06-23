@@ -138,6 +138,7 @@
     <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp" />
     <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp" />
     <ClCompile Include="Enemy\Monster\Slime\CRSlime.cpp" />
+    <ClCompile Include="Enemy\Monster\Troll\Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleRPG.h" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Enemy\Monster\Interface\IMonster.h" />
     <ClInclude Include="Enemy\Monster\Orc\CROrc.h" />
     <ClInclude Include="Enemy\Monster\Slime\CRSlime.h" />
+    <ClInclude Include="Enemy\Monster\Troll\Troll.h" />
     <ClInclude Include="ICRCombat.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>

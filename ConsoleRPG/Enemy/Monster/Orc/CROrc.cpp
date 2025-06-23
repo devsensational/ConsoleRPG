@@ -3,6 +3,6 @@
 
 CROrc::CROrc(int level) {
   name = "Orc";
-  health = 50 + level * 7;
-  attack = 10 + level * 2;
+  CurrentHealth = 50 + level * 7;
+  MonsterDamage = 10 + level * 2;
 }

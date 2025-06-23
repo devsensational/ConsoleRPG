@@ -1,20 +1,8 @@
 ﻿#pragma once
 
-#include "../Interface/MonsterInterface.h"
-#include <string>
+#include "../Interface/CRMonsterBase.h"
 
-class Troll : public IMonster
-{
+class CRTroll : public MonsterBase {
 public:
-  Troll(int level);
-
-  std::string GetName() const override;
-  int GetHealth() const override;
-  int GetAttack() const override;
-  void TakeDamage(int damage) override;
-
-private:
-  std::string name;
-  int health;
-  int attack;
+    CRTroll(int level);
 };

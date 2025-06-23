@@ -3,7 +3,7 @@
 
 CRSlime::CRSlime(int level)
 {
-  name = "Troll";
-  health = 70 + level * 10;
-  attack = 8 + level * 3;
+  name = "Slime";
+  CurrentHealth = 70 + level * 10;
+  MonsterDamage = 8 + level * 3;
 }

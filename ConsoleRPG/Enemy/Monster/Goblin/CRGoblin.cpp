@@ -3,6 +3,6 @@
 
 Goblin::Goblin(int level) {
   name = "Goblin";
-  health = 30 + level * 5;
-  attack = 5 + level;
+  CurrentHealth = 30 + level * 5;
+  MonsterDamage = 5 + level;
 }
