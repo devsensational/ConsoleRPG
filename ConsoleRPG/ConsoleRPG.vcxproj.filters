@@ -92,5 +92,8 @@
     <ClInclude Include="CRGameMode.h">
       <Filter>헤더 파일\Game</Filter>
     </ClInclude>
+    <ClInclude Include="ICRGameMode.h">
+      <Filter>헤더 파일\Interfaces</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

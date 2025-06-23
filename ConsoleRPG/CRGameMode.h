@@ -4,10 +4,11 @@
 
 #include "ConsoleRPG.h"
 #include "ICRCombat.h"
+#include "ICRGameMode.h"
 
 using namespace std;
 
-class CRGameMode
+class CRGameMode: public ICRGameMode
 {
 public:
 	CRGameMode();
@@ -16,16 +17,32 @@ public:
 private:
 	string UserName;
 
+	/* 게임 섹션*/
 public:
-	void SetUserName(const string& text);
+	virtual void GameStart() override;
+
+	void SetUserName();
+
+private:
+	int GameLevel = 0;
+
+	bool bIsGameOver = false;
+	bool bIsCombatOver = false;
 
 	/* 전투 관련 섹션 */
 protected:
 	unique_ptr<vector<shared_ptr<ICRCombat>>> CombatSequence;
 
-protected:
+public:
 	void CombatInit();
 	void CombatStart();
 	void CombatEnd();
+
+	void CombatWin();
+	void CombatLose();
+
+	/* Getter / Setter */
+public:
+	inline int GetGameLevel() { return GameLevel; }
 };
 

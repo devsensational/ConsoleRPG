@@ -10,7 +10,7 @@ class CRConsoleUI
 public:
 	CRConsoleUI();
 
-	string SelectName();
+	void SelectName();
 	void PrintCombatMenu();
 	void PrintStoreMenu();
 

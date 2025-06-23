@@ -9,6 +9,7 @@
 #include "CRConsoleRenderer.h"
 #include "CRActor.h"
 #include "CRGameMode.h"
+#include "ICRGameMode.h"
 
 /*	클래스 설명:
 *	게임을 초기화하고, LIfecycle을 관리하기 위한 클래스입니다.
@@ -18,8 +19,8 @@ using namespace std;
 
 CRGameSystem::CRGameSystem()
 {
-	unique_ptr<CRGameMode> GameMode = make_unique<CRGameMode>();
-	unique_ptr<CRConsoleUI> GameConsoleUI = make_unique<CRConsoleUI>();
+	GameMode = make_unique<CRGameMode>();
+	GameConsoleUI = make_unique<CRConsoleUI>();
 }
 
 /*
@@ -39,12 +40,7 @@ void CRGameSystem::GameStart()
 */
 void CRGameSystem::LIfecycle()
 {
-	GameMode->SetUserName(GameConsoleUI->SelectName());
-	while (!bEndSignal)
-	{
-		GameConsoleUI->PrintCombatMenu();
-
-	}
+	GameMode->GameStart();
 }
 
 /*

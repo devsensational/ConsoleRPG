@@ -1,17 +1,15 @@
 ﻿#include "CRConsoleUI.h"
+#include "Singleton.h"
+#include "CREventManager.h"
 
 CRConsoleUI::CRConsoleUI()
 {
-
+	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_SetUserName, bind(&CRConsoleUI::SelectName, this));
 }
 
-string CRConsoleUI::SelectName()
+void CRConsoleUI::SelectName()
 {
-	string Name;
 	cout << "닉네임을 입력해주세요: ";
-	cin >> Name;
-
-	return string();
 }
 
 void CRConsoleUI::PrintCombatMenu()
