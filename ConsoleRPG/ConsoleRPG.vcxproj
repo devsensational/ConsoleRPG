@@ -134,6 +134,10 @@
     <ClCompile Include="CRGameManager.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRMain.cpp" />
+    <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp" />
+    <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp" />
+    <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp" />
+    <ClCompile Include="Enemy\Monster\Slime\CRSlime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleRPG.h" />
@@ -143,6 +147,11 @@
     <ClInclude Include="CREventManager.h" />
     <ClInclude Include="CRGameManager.h" />
     <ClInclude Include="CRGameSystem.h" />
+    <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h" />
+    <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h" />
+    <ClInclude Include="Enemy\Monster\Interface\IMonster.h" />
+    <ClInclude Include="Enemy\Monster\Orc\CROrc.h" />
+    <ClInclude Include="Enemy\Monster\Slime\CRSlime.h" />
     <ClInclude Include="ICRCombat.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>

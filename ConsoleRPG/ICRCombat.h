@@ -1,8 +1,8 @@
 #pragma once
 
-//Interface
+// Interface
 // 
-// MonsterBase¶û CharacterBase¿¡ ÇØ´ç ÀÎÅÍÆäÀÌ½º¸¦ Àû¿ëÇØ¼­ ¸¸µå½Ã¸é µË´Ï´Ù.
+// MonsterBaseï¿½ï¿½ CharacterBaseï¿½ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¸ï¿½ ï¿½Ë´Ï´ï¿½.
 class ICRCombat
 {
 protected:
