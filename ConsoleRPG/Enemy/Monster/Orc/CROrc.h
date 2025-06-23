@@ -1,8 +1,8 @@
 ﻿#pragma once
 #include "../Interface/CRMonsterBase.h"
 
-class CROrc : public MonsterBase {
+class Orc : public MonsterBase {
 public:
-  CROrc(int level);
+  Orc(int level);
 };
 

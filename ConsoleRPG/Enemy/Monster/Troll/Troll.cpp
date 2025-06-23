@@ -1,8 +1,8 @@
 ﻿#include "Troll.h"
 
-CRTroll::CRTroll(int level)
+Troll::Troll(int level)
 {
-    name = "Troll";
+    Name = "Troll";
     CurrentHealth = 70 + level * 10;
     MonsterDamage = 8 + level * 3;
 }

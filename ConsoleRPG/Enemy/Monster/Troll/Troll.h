@@ -2,7 +2,7 @@
 
 #include "../Interface/CRMonsterBase.h"
 
-class CRTroll : public MonsterBase {
+class Troll : public MonsterBase {
 public:
-    CRTroll(int level);
+    Troll(int level);
 };

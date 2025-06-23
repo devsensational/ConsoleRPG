@@ -2,9 +2,9 @@
 
 #include "../Interface/CRMonsterBase.h"
 
-class CRSlime : public MonsterBase {
+class Slime : public MonsterBase {
 public:
-  CRSlime(int level);
+  Slime(int level);
 };
 
 
