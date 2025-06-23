@@ -133,10 +133,12 @@
     <ClCompile Include="CRConsoleUI.cpp" />
     <ClCompile Include="CRGameManager.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
+    <ClCompile Include="CRGoblin.cpp" />
     <ClCompile Include="CRMain.cpp" />
     <ClCompile Include="CROrc.cpp" />
     <ClCompile Include="CRSlime.cpp" />
     <ClCompile Include="Troll.cpp" />
+    <ClCompile Include="TrollKing.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleRPG.h" />
@@ -148,11 +150,13 @@
     <ClInclude Include="CRGameSystem.h" />
     <ClInclude Include="CROrc.h" />
     <ClInclude Include="CRSlime.h" />
-    <ClInclude Include="ICRMonsterbase.h" />
+    <ClInclude Include="CRMonsterbase.h" />
     <ClInclude Include="CRGoblin.h" />
     <ClInclude Include="ICRCombat.h" />
+    <ClInclude Include="IMonster.h" />
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="Troll.h" />
+    <ClInclude Include="CRTroll.h" />
+    <ClInclude Include="TrollKing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

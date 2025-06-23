@@ -1,21 +1,8 @@
-#include "Troll.h"
+#include "CRTroll.h"
+#include "Singleton.h"
 
-std::string CRTroll::getname()
-{
-    return std::string();
-}
-
-int CRTroll::GetHP()
-{
-    return 0;
-}
-
-int CRTroll::monsterrandHP(int level)
-{
-    return 0;
-}
-
-int CRTroll::monsterrandAttack(int level)
-{
-    return 0;
+Troll::Troll(int level) {
+	name = "Troll";
+	health = MonsterRandHealth(level);
+	attack = MonsterRandAttack(level);
 }

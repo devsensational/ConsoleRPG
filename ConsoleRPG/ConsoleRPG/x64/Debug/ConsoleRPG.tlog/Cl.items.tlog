@@ -1,6 +1,11 @@
-C:\Repos\ConsoleRPG\ConsoleRPG\CRActor.cpp;C:\Repos\ConsoleRPG\ConsoleRPG\ConsoleRPG\x64\Debug\CRActor.obj
-C:\Repos\ConsoleRPG\ConsoleRPG\CRConsoleRenderer.cpp;C:\Repos\ConsoleRPG\ConsoleRPG\ConsoleRPG\x64\Debug\CRConsoleRenderer.obj
-C:\Repos\ConsoleRPG\ConsoleRPG\CRConsoleUI.cpp;C:\Repos\ConsoleRPG\ConsoleRPG\ConsoleRPG\x64\Debug\CRConsoleUI.obj
-C:\Repos\ConsoleRPG\ConsoleRPG\CRGameManager.cpp;C:\Repos\ConsoleRPG\ConsoleRPG\ConsoleRPG\x64\Debug\CRGameManager.obj
-C:\Repos\ConsoleRPG\ConsoleRPG\CRGameSystem.cpp;C:\Repos\ConsoleRPG\ConsoleRPG\ConsoleRPG\x64\Debug\CRGameSystem.obj
-C:\Repos\ConsoleRPG\ConsoleRPG\CRMain.cpp;C:\Repos\ConsoleRPG\ConsoleRPG\ConsoleRPG\x64\Debug\CRMain.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRActor.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRActor.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRConsoleRenderer.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRConsoleRenderer.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRConsoleUI.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRConsoleUI.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRGameManager.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRGameManager.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRGameSystem.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRGameSystem.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRGoblin.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRGoblin.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRMain.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRMain.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CROrc.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CROrc.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\CRSlime.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\CRSlime.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\Troll.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\Troll.obj
+C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\TrollKing.cpp;C:\Users\jijij\OneDrive\문서\GitHub\ConsoleRPG1\ConsoleRPG\ConsoleRPG\x64\Debug\TrollKing.obj

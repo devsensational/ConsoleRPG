@@ -7,10 +7,8 @@ class ICRCombat
 {
 protected:
 	ICRCombat() = default;
-
 public:
 	virtual void Attack() = 0;
-	virtual void TakeDamage(int damage) = 0;
-
+	virtual void TakeDamage(int value) = 0;
 	virtual ~ICRCombat() = default;
 };

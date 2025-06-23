@@ -1,21 +1,9 @@
 #include "CRSlime.h"
+#include "Singleton.h"
 
-std::string CRSlime::getname()
-{
-    return std::string();
+Slime::Slime(int level) {
+	name = "Slime";
+	health = MonsterRandHealth(level);
+	attack = MonsterRandAttack(level);
 }
 
-int CRSlime::GetHP()
-{
-    return 0;
-}
-
-int CRSlime::monsterrandHP()
-{
-    return 0;
-}
-
-int CRSlime::monsterrandAttack()
-{
-    return 0;
-}

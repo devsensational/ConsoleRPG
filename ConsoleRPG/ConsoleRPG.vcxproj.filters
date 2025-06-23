@@ -40,6 +40,24 @@
     <Filter Include="헤더 파일\Monster">
       <UniqueIdentifier>{fbba36a6-7108-4aba-9f77-093764892190}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Monster\MonsterInterface">
+      <UniqueIdentifier>{1d02e33b-81a9-4d73-a5e9-00ef94a285ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Monster\Orc">
+      <UniqueIdentifier>{c90abf43-5fee-459a-b86e-7ac84f59a471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Monster\Goblin">
+      <UniqueIdentifier>{90ddfc9f-6ae8-4653-a7c1-d154fce3af23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Monster\Slime">
+      <UniqueIdentifier>{8b0b0474-ec41-489f-bdd3-b5a6252f301b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Monster\Troll">
+      <UniqueIdentifier>{3fcbf72a-0b17-4126-80f7-dd78a3edb23b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Monster\BossMonster">
+      <UniqueIdentifier>{6eec92d8-d188-48dd-a3fd-9b9271fe5231}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CRMain.cpp">
@@ -61,13 +79,19 @@
       <Filter>소스 파일\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="CROrc.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일\Monster\Orc</Filter>
+    </ClCompile>
+    <ClCompile Include="CRGoblin.cpp">
+      <Filter>헤더 파일\Monster\Goblin</Filter>
     </ClCompile>
     <ClCompile Include="CRSlime.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일\Monster\Slime</Filter>
     </ClCompile>
     <ClCompile Include="Troll.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>헤더 파일\Monster\Troll</Filter>
+    </ClCompile>
+    <ClCompile Include="TrollKing.cpp">
+      <Filter>헤더 파일\Monster\BossMonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -98,20 +122,26 @@
     <ClInclude Include="CRConsoleRenderer.h">
       <Filter>헤더 파일\Renderers</Filter>
     </ClInclude>
-    <ClInclude Include="ICRMonsterbase.h">
-      <Filter>헤더 파일\Monster</Filter>
+    <ClInclude Include="CRMonsterbase.h">
+      <Filter>헤더 파일\Monster\MonsterInterface</Filter>
     </ClInclude>
-    <ClInclude Include="CRGoblin.h">
-      <Filter>헤더 파일\Monster</Filter>
+    <ClInclude Include="IMonster.h">
+      <Filter>헤더 파일\Monster\MonsterInterface</Filter>
     </ClInclude>
     <ClInclude Include="CROrc.h">
-      <Filter>헤더 파일\Monster</Filter>
+      <Filter>헤더 파일\Monster\Orc</Filter>
+    </ClInclude>
+    <ClInclude Include="CRGoblin.h">
+      <Filter>헤더 파일\Monster\Goblin</Filter>
     </ClInclude>
     <ClInclude Include="CRSlime.h">
-      <Filter>헤더 파일\Monster</Filter>
+      <Filter>헤더 파일\Monster\Slime</Filter>
     </ClInclude>
-    <ClInclude Include="Troll.h">
-      <Filter>헤더 파일\Monster</Filter>
+    <ClInclude Include="CRTroll.h">
+      <Filter>헤더 파일\Monster\Troll</Filter>
+    </ClInclude>
+    <ClInclude Include="TrollKing.h">
+      <Filter>헤더 파일\Monster\BossMonster</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
