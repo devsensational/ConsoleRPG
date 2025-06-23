@@ -1,8 +1,8 @@
 #pragma once
 
-// Interface
+//Interface
 // 
-// MonsterBase�� CharacterBase�� �ش� �������̽��� �����ؼ� ����ø� �˴ϴ�.
+// MonsterBase랑 CharacterBase에 해당 인터페이스를 적용해서 만드시면 됩니다.
 class ICRCombat
 {
 protected:
