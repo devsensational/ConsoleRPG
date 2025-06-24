@@ -23,6 +23,7 @@ void CRGameMode::GameStart()
 	SetUserName();
 	while(!bIsGameOver)
 	{
+		CombatInit();
 		while (!bIsCombatOver)
 		{
 			CombatStart();
@@ -44,9 +45,7 @@ void CRGameMode::SetUserName()
 */
 void CRGameMode::CombatInit()
 {
-	CombatSequence->push_back(make_shared<Goblin>());
-	CombatSequence->push_back(make_shared<Goblin>());
-	CombatSequence->push_back(make_shared<Goblin>());
+	CombatSequence->push_back(make_shared<Goblin>(1, 1));
 	//Todo: 내 캐릭터와 적이 될 유닛들을 생성 후 CombatSequence에 추가해야 함
 }
 
@@ -84,5 +83,5 @@ void CRGameMode::CombatWin()
 void CRGameMode::CombatLose()
 {
 	bIsGameOver = true;
-	CombatLose();
+	CombatEnd();
 }
