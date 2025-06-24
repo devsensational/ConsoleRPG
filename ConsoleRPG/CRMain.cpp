@@ -3,7 +3,9 @@
 #include "CRWarrior.h"
 #include "CRMage.h"
 #include "CRRogue.h"
-#include "CRHealPotion.h"
+#include "CRRedPotion.h"
+#include "CROrangePotion.h"
+#include "CRWhitePotion.h"
 #include "CRAttackBoost.h"
 #include "CRGameManager.h"
 
@@ -19,18 +21,26 @@ int main()
     player->showStatus();
 
     // 2. 아이템 생성 및 인벤토리에 추가
-    shared_ptr<CRItem> potion = make_shared<CRHealPotion>();
-    shared_ptr<CRItem> boost = make_shared<CRAttackBoost>();
+    //shared_ptr<CRItem> spRedPotion = make_shared<CRRedPotion>("RedPotion", 20);
+    //shared_ptr<CRItem> spOrangePotion = make_shared<CROrangePotion>("OrangePotion", 35);
+    //shared_ptr<CRItem> spWhitePotion = make_shared<CRWhitePotion>("WhitePotion", 40);
+    //shared_ptr<CRItem> spAttackBoost = make_shared<CRAttackBoost>("AttackBoost", 20);
 
-    player->getInventory()->addItem(potion);
-    player->getInventory()->addItem(boost);
+    //player->getInventory()->addItem(spRedPotion);
+    //player->getInventory()->addItem(spAttackBoost);
+
+    player->getInventory()->createItem(1);
+    player->getInventory()->createItem(2);
+    player->getInventory()->createItem(3);
+    
+
 
     cout << "\n아이템이 인벤토리에 추가되었습니다:" << endl;
     player->getInventory()->showItems();
 
     // 3. 아이템 사용
     cout << "\n첫 번째 아이템 사용 중..." << endl;
-    player->useItem(0); // 힐포션 사용
+    player->useItem(0); // 빨간물약 힐포션 사용
     player->showStatus();
 
     // 4. 전투 시작

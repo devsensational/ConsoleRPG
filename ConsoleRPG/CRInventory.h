@@ -15,7 +15,14 @@ private:
     vector<shared_ptr<CRItem>> items;
 
 public:
+    CRInventory();
+
+
     void addItem(shared_ptr<CRItem> item);
     void showItems();
     void useItem(int index, CRCharacter* target);
+    // ·£´ý ¾ÆÀÌÅÛ È¹µæ ÇÔ¼ö
+    void createItem(int index);
+
+
 };

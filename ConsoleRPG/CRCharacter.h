@@ -10,7 +10,12 @@ using namespace std;
 class CRCharacter 
 {
 private:
-    shared_ptr<CRInventory> inventory;
+    // 인벤토리를 가르킬 수 있는 쉐어드포인터를 캐릭터가 들고 있는 형태
+    shared_ptr<CRInventory> spInventory;
+
+    // 이벤트 리스터 ID 저장
+    int iListenerID;
+
 
 protected:
     string name;

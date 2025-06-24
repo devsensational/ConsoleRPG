@@ -15,9 +15,6 @@ public:
     }
 
 
-    void stealthAttack() 
-    {
-        // 도적의 특수 능력 (예시)
-        cout << getName() << "이(가) 은신 공격을 합니다!" << endl;
-    }
+    void stealthAttack();
+
 };
