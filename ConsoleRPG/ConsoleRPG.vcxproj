@@ -134,6 +134,8 @@
     <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRMain.cpp" />
+    <ClCompile Include="Enemy\Monster\Enum\CRMonsterType.h" />
+    <ClCompile Include="Enemy\Monster\Factory\CRMonsterFactory.cpp" />
     <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp" />
     <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp" />
     <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp" />
@@ -148,6 +150,7 @@
     <ClInclude Include="CREventManager.h" />
     <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
+    <ClInclude Include="Enemy\Monster\Factory\CRMonsterFactory.h" />
     <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h" />
     <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h" />
     <ClInclude Include="Enemy\Monster\Interface\IMonster.h" />
