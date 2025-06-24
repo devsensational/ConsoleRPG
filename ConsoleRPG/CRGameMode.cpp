@@ -26,6 +26,8 @@ void CRGameMode::GameStart()
 		{
 			CombatStart();
 		}
+		if (bIsGameOver) break;
+		Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_StoreOpen);
 	}
 }
 

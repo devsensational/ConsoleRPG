@@ -15,6 +15,7 @@ enum EEventType
 	EET_CombatWin,
 	EET_CombatLose,
 	EET_SetUserName,
+	EET_StoreOpen,
 
 	EET_END = 99,
 };
