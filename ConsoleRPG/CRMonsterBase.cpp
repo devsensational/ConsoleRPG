@@ -9,10 +9,10 @@ using namespace std;
 
 MonsterBase :: MonsterBase()
 {
-	//랜덤 수치 생성
+	
 	randHealth = rand() % 11;
 	randAttack = rand() % 6;
-	//구독 : 몬스터가 데미지 받을 때 호출되는 이벤트에 등록
+	
 	Singleton<CREventManager<int>>::GetInstance().Subscribe(
 		EEventType::EET_MonsterTakeDamage,
 		bind(&MonsterBase::TakeDamage, this, placeholders::_1));
@@ -27,14 +27,14 @@ int MonsterBase::GetHealth()
 	return health;
 }
 void MonsterBase::Attack() {
-	// 브로드캐스트: 캐릭터가 데미지를 받도록 알림
+	
 	Singleton<CREventManager<int>>::GetInstance().Broadcast(
 		EEventType::EET_CharacterTakeDamage,
 		attack);
 }
 void MonsterBase::TakeDamage(int damage) {
 	health = std::max(0, health - damage);
-	Singleton<CRConsoleRenderer>::GetInstance().AddBuffer(TEXT("아야!"));
+	Singleton<CRConsoleRenderer>::GetInstance().AddBuffer(TEXT("占싣억옙!"));
 	Singleton<CRConsoleRenderer>::GetInstance().AddBuffer(TEXT(to_string(health)));
 }
 

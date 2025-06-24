@@ -18,7 +18,7 @@ public:
 	void Attack() override;
 	void TakeDamage(int damage) override;
 
-	//몬스터 체력 공격력 랜덤 함수
+	
 	virtual int MonsterRandHealth(int level);
 	virtual int MonsterRandAttack(int level);
 

@@ -55,6 +55,16 @@
 x64/
 Debug/
 Release/
+ipch/
+*.obj
+*.pch
+*.pdb
+*.exe
+*.ilk
+*.log
+*.tlog
+*.cache
+*.o
 
 # 💡 CMake/Build system
 CMakeFiles/
