@@ -54,14 +54,29 @@
     <ClCompile Include="CRActor.cpp">
       <Filter>소스 파일\Actors</Filter>
     </ClCompile>
-    <ClCompile Include="CRConsoleUI.cpp">
-      <Filter>소스 파일\Renderers</Filter>
-    </ClCompile>
     <ClCompile Include="CRConsoleRenderer.cpp">
       <Filter>소스 파일\Renderers</Filter>
     </ClCompile>
     <ClCompile Include="CRGameMode.cpp">
       <Filter>소스 파일\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Slime\CRSlime.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Troll\Troll.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRConsoleUI.cpp">
+      <Filter>소스 파일\Renderers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +109,27 @@
     </ClInclude>
     <ClInclude Include="ICRGameMode.h">
       <Filter>헤더 파일\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Interface\IMonster.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Orc\CROrc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Slime\CRSlime.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Struct\CRMonsterHealthInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Troll\Troll.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

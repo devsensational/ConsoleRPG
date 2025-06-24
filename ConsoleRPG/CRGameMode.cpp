@@ -4,6 +4,7 @@
 #include "ICRCombat.h"
 #include "CREventManager.h"
 #include "Singleton.h"
+#include "Enemy/Monster/Goblin/CRGoblin.h"
 
 using namespace std;
 
@@ -43,6 +44,9 @@ void CRGameMode::SetUserName()
 */
 void CRGameMode::CombatInit()
 {
+	CombatSequence->push_back(make_shared<Goblin>());
+	CombatSequence->push_back(make_shared<Goblin>());
+	CombatSequence->push_back(make_shared<Goblin>());
 	//Todo: 내 캐릭터와 적이 될 유닛들을 생성 후 CombatSequence에 추가해야 함
 }
 

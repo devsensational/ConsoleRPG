@@ -26,7 +26,7 @@
  * @see IMonster
  * @see ICRCombat
  */
-class MonsterBase : public IMonster, ICRCombat
+class MonsterBase : public IMonster, public ICRCombat
 {
 private:
     // @brief 기본 체력값 상수
