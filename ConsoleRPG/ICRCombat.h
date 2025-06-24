@@ -2,7 +2,7 @@
 
 //Interface
 // 
-// MonsterBase¶û CharacterBase¿¡ ÇØ´ç ÀÎÅÍÆäÀÌ½º¸¦ Àû¿ëÇØ¼­ ¸¸µå½Ã¸é µË´Ï´Ù.
+// MonsterBaseë‘ CharacterBaseì— í•´ë‹¹ ì¸í„°í˜ì´ìŠ¤ë¥¼ ì ìš©í•´ì„œ ë§Œë“œì‹œë©´ ë©ë‹ˆë‹¤.
 class ICRCombat
 {
 protected:
