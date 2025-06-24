@@ -129,11 +129,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CRActor.cpp" />
+    <ClCompile Include="CRAttackBoost.cpp" />
+    <ClCompile Include="CRCharacter.cpp" />
     <ClCompile Include="CRConsoleRenderer.cpp" />
     <ClCompile Include="CRConsoleUI.cpp" />
     <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
+    <ClCompile Include="CRInventory.cpp" />
+    <ClCompile Include="CRItem.cpp" />
+    <ClCompile Include="CRMage.cpp" />
     <ClCompile Include="CRMain.cpp" />
+    <ClCompile Include="CROrangePotion.cpp" />
+    <ClCompile Include="CRRedPotion.cpp" />
+    <ClCompile Include="CRRogue.cpp" />
+    <ClCompile Include="CRWarrior.cpp" />
+    <ClCompile Include="CRWhitePotion.cpp" />
     <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp" />
     <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp" />
     <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp" />
@@ -143,11 +153,21 @@
   <ItemGroup>
     <ClInclude Include="ConsoleRPG.h" />
     <ClInclude Include="CRActor.h" />
+    <ClInclude Include="CRAttackBoost.h" />
+    <ClInclude Include="CRCharacter.h" />
     <ClInclude Include="CRConsoleRenderer.h" />
     <ClInclude Include="CRConsoleUI.h" />
     <ClInclude Include="CREventManager.h" />
     <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
+    <ClInclude Include="CRInventory.h" />
+    <ClInclude Include="CRItem.h" />
+    <ClInclude Include="CRMage.h" />
+    <ClInclude Include="CROrangePotion.h" />
+    <ClInclude Include="CRRedPotion.h" />
+    <ClInclude Include="CRRogue.h" />
+    <ClInclude Include="CRWarrior.h" />
+    <ClInclude Include="CRWhitePotion.h" />
     <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h" />
     <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h" />
     <ClInclude Include="Enemy\Monster\Interface\IMonster.h" />

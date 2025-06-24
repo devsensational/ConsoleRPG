@@ -4,5 +4,5 @@
 
 class Goblin : public MonsterBase {
 public:
-  Goblin(int level);
+  Goblin(int level, int uniqueId);
 };

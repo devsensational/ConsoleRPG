@@ -5,6 +5,7 @@
 CRConsoleUI::CRConsoleUI()
 {
 	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_SetUserName, bind(&CRConsoleUI::SelectName, this));
+	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_StoreOpen, bind(&CRConsoleUI::PrintStoreMenu, this));
 }
 
 void CRConsoleUI::SelectName()
