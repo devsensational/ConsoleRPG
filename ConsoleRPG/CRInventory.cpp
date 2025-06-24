@@ -13,7 +13,7 @@
 
 CRInventory::CRInventory()
 {
-    Singleton<CREventManager<int>>::GetInstance().Subscribe(EventType::MonsterRandomDrop, bind(&CRInventory::createItem, this, placeholders::_1));
+    Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_MonsterRandomDrop, bind(&CRInventory::createItem, this, placeholders::_1));
 }
 
 void CRInventory::addItem(shared_ptr<CRItem> item)
