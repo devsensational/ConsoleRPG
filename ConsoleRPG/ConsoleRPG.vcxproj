@@ -131,7 +131,7 @@
     <ClCompile Include="CRActor.cpp" />
     <ClCompile Include="CRConsoleRenderer.cpp" />
     <ClCompile Include="CRConsoleUI.cpp" />
-    <ClCompile Include="CRGameManager.cpp" />
+    <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRMain.cpp" />
     <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp" />
@@ -146,7 +146,7 @@
     <ClInclude Include="CRConsoleRenderer.h" />
     <ClInclude Include="CRConsoleUI.h" />
     <ClInclude Include="CREventManager.h" />
-    <ClInclude Include="CRGameManager.h" />
+    <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
     <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h" />
     <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h" />
@@ -156,6 +156,7 @@
     <ClInclude Include="Enemy\Monster\Struct\CRMonsterHealthInfo.h" />
     <ClInclude Include="Enemy\Monster\Troll\Troll.h" />
     <ClInclude Include="ICRCombat.h" />
+    <ClInclude Include="ICRGameMode.h" />
     <ClInclude Include="Singleton.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
