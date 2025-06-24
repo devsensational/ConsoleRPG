@@ -27,7 +27,7 @@ public:
 
 	/* 게임 매니저 섹션 */
 private:
-	unique_ptr<CRGameMode> GameMode;
+	unique_ptr<ICRGameMode> GameMode;
 	unique_ptr<CRConsoleUI> GameConsoleUI;
 };
 

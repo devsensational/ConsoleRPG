@@ -34,9 +34,6 @@ void CRGameSystem::GameStart()
 
 /*
 * 게임 전체의 주기를 반복하는 함수입니다.
-* 
-* 1주기 순서
-* 캐릭터 생성 -> 전투 -> 전투 Log 출력 -> (전투 반복) -> 전투 종료 -> 상점 방문 -> (전투 반복) -> 게임 클리어 
 */
 void CRGameSystem::LIfecycle()
 {
