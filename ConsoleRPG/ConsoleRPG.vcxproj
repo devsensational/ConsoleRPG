@@ -131,15 +131,14 @@
     <ClCompile Include="CRActor.cpp" />
     <ClCompile Include="CRConsoleRenderer.cpp" />
     <ClCompile Include="CRConsoleUI.cpp" />
-    <ClCompile Include="CRGameManager.cpp" />
+    <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
-    <ClCompile Include="CRGoblin.cpp" />
     <ClCompile Include="CRMain.cpp" />
-    <ClCompile Include="CRMonsterBase.cpp" />
-    <ClCompile Include="CROrc.cpp" />
-    <ClCompile Include="CRSlime.cpp" />
-    <ClCompile Include="Troll.cpp" />
-    <ClCompile Include="TrollKing.cpp" />
+    <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp" />
+    <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp" />
+    <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp" />
+    <ClCompile Include="Enemy\Monster\Slime\CRSlime.cpp" />
+    <ClCompile Include="Enemy\Monster\Troll\Troll.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleRPG.h" />
@@ -147,17 +146,18 @@
     <ClInclude Include="CRConsoleRenderer.h" />
     <ClInclude Include="CRConsoleUI.h" />
     <ClInclude Include="CREventManager.h" />
-    <ClInclude Include="CRGameManager.h" />
+    <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
-    <ClInclude Include="CROrc.h" />
-    <ClInclude Include="CRSlime.h" />
-    <ClInclude Include="CRMonsterbase.h" />
-    <ClInclude Include="CRGoblin.h" />
+    <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h" />
+    <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h" />
+    <ClInclude Include="Enemy\Monster\Interface\IMonster.h" />
+    <ClInclude Include="Enemy\Monster\Orc\CROrc.h" />
+    <ClInclude Include="Enemy\Monster\Slime\CRSlime.h" />
+    <ClInclude Include="Enemy\Monster\Struct\CRMonsterHealthInfo.h" />
+    <ClInclude Include="Enemy\Monster\Troll\Troll.h" />
     <ClInclude Include="ICRCombat.h" />
-    <ClInclude Include="IMonster.h" />
+    <ClInclude Include="ICRGameMode.h" />
     <ClInclude Include="Singleton.h" />
-    <ClInclude Include="CRTroll.h" />
-    <ClInclude Include="TrollKing.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

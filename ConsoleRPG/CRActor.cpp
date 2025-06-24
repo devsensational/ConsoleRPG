@@ -8,7 +8,7 @@ CRActor::CRActor()
 {
 	// 구독
 	// -> 로 참조한거와 거의 비슷함
-	Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_CharacterTakeDamage,
+	Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_CharacterTakeDamage, 
 		bind(&CRActor::TakeDamage /*함수*/, this /* 본인 인스턴스 */, placeholders::_1 /* 인자 수 마다 증가*/));
 }
 
