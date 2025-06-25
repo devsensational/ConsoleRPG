@@ -1,6 +1,5 @@
 #include "CRCharacter.h"
 #include "ConsoleRPG.h"
-#include "CRGameManager.h"
 #include "Singleton.h"
 
 #include <iostream>
@@ -11,10 +10,10 @@ using namespace std;
 
 
 CRCharacter::CRCharacter(string name, int health, int attack)
-    : name(name), iHealth(health), iAttack(attack), iMaxHealth(health), iLevel(1), iExperience(0) 
+    : name(name), iHealth(health), iAttack(attack), iMaxHealth(health), iLevel(1), iExperience(0),
+    spInventory(make_shared<CRInventory>())
 {
     // 캐릭터 생성자에서 inventory shared_ptr객체 초기화.
-    spInventory = make_shared<CRInventory>();
 
 
 
@@ -36,7 +35,7 @@ void CRCharacter::useItem(int index)
 
 
 
-void CRCharacter::takeDamage(int damage) 
+void CRCharacter::TakeDamage(int damage) 
 {
     iHealth -= damage;
     if (iHealth < 0) iHealth = 0;
@@ -70,4 +69,8 @@ void CRCharacter::levelUp()
 void CRCharacter::showStatus() 
 {
     cout << name << " - 레벨: " << iLevel << ", 체력: " << iHealth << ", 공격력: " << iAttack << endl;
+}
+
+void CRCharacter::Attack()
+{
 }

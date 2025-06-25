@@ -131,9 +131,9 @@
     <ClCompile Include="CRActor.cpp" />
     <ClCompile Include="CRAttackBoost.cpp" />
     <ClCompile Include="CRCharacter.cpp" />
+    <ClCompile Include="CRCombatManager.cpp" />
     <ClCompile Include="CRConsoleRenderer.cpp" />
     <ClCompile Include="CRConsoleUI.cpp" />
-    <ClCompile Include="CRGameManager.cpp" />
     <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRInventory.cpp" />
@@ -157,10 +157,10 @@
     <ClInclude Include="CRActor.h" />
     <ClInclude Include="CRAttackBoost.h" />
     <ClInclude Include="CRCharacter.h" />
+    <ClInclude Include="CRCombatManager.h" />
     <ClInclude Include="CRConsoleRenderer.h" />
     <ClInclude Include="CRConsoleUI.h" />
     <ClInclude Include="CREventManager.h" />
-    <ClInclude Include="CRGameManager.h" />
     <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
     <ClInclude Include="CRInventory.h" />

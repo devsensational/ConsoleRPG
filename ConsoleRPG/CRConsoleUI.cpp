@@ -6,6 +6,8 @@ CRConsoleUI::CRConsoleUI()
 {
 	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_SetUserName, bind(&CRConsoleUI::SelectName, this));
 	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_StoreOpen, bind(&CRConsoleUI::PrintStoreMenu, this));
+	Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_CharacterTakeDamage, bind(&CRConsoleUI::PrintMonsterAttackLog, this, placeholders::_1));
+
 }
 
 void CRConsoleUI::SelectName()
@@ -35,4 +37,9 @@ void CRConsoleUI::PrintCombatUI()
 	{
 		
 	}
+}
+
+void CRConsoleUI::PrintMonsterAttackLog(int damage)
+{
+	cout << damage << '\n';
 }

@@ -16,6 +16,7 @@ public:
 
 public:
 	void PrintCombatUI();
+	void PrintMonsterAttackLog(int damage);
 
 private:
 	unique_ptr<vector<string>> CombatStatusList;
