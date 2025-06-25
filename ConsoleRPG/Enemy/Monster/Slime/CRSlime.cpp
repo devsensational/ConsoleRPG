@@ -1,6 +1,6 @@
 ﻿#include "CRSlime.h"
 
-Slime::Slime(int level)
+Slime::Slime(int level, int uniqueId)
 {
   Name = "Slime";
   CurrentHealth = 70 + level * 10;

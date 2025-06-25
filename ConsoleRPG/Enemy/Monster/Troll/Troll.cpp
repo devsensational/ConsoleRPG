@@ -1,6 +1,6 @@
 ﻿#include "Troll.h"
 
-Troll::Troll(int level)
+Troll::Troll(int level, int uniqueId)
 {
     Name = "Troll";
     CurrentHealth = 70 + level * 10;

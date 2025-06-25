@@ -4,7 +4,7 @@
 
 class Slime : public MonsterBase {
 public:
-  Slime(int level);
+  Slime(int level, int uniqueId);
 };
 
 
