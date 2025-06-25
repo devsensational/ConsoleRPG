@@ -15,7 +15,7 @@ class CRMonsterFactory
      *         유효하지 않은 타입이 전달될 경우 nullptr을 반환합니다.
      */
 public:
-    static std::shared_ptr<MonsterBase> CreateMonster(EMonsterType monsterType, int level);
+    static std::shared_ptr<MonsterBase> CreateMonster(EMonsterType monsterType, int level, int uniqueId);
 
 private:
   /** @brief 팩토리 클래스의 인스턴스화를 방지하기 위한 private 생성자 */

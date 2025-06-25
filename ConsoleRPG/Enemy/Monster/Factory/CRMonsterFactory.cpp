@@ -14,7 +14,7 @@
  * @return std::shared_ptr<MonsterBase> 생성된 몬스터 객체를 가리키는 스마트 포인터.
  *         유효하지 않은 유형이 사용될 경우 nullptr을 반환합니다.
  */
-std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monsterType, int level)
+std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monsterType, int level, int uniqueId)
 {
   switch (monsterType)
   {
@@ -22,10 +22,10 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
     return std::make_shared<Troll>(level);
     
   case EMonsterType::EMT_Goblin:
-    return std::make_shared<Goblin>(level);
+    return std::make_shared<Goblin>(level, uniqueId);
 
   case EMonsterType::EMT_Orc:
-    return std::make_shared<Orc>(level);
+    return std::make_shared<Orc>(level, uniqueId);
 
   case EMonsterType::EMT_Slime:
     return std::make_shared<Slime>(level);
