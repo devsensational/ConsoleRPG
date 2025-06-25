@@ -140,6 +140,8 @@
     <ClCompile Include="CRItem.cpp" />
     <ClCompile Include="CRMage.cpp" />
     <ClCompile Include="CRMain.cpp" />
+    <ClCompile Include="Enemy\Monster\Enum\CRMonsterType.h" />
+    <ClCompile Include="Enemy\Monster\Factory\CRMonsterFactory.cpp" />
     <ClCompile Include="CROrangePotion.cpp" />
     <ClCompile Include="CRRedPotion.cpp" />
     <ClCompile Include="CRRogue.cpp" />
@@ -163,6 +165,7 @@
     <ClInclude Include="CRGameManager.h" />
     <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
+    <ClInclude Include="Enemy\Monster\Factory\CRMonsterFactory.h" />
     <ClInclude Include="CRInventory.h" />
     <ClInclude Include="CRItem.h" />
     <ClInclude Include="CRMage.h" />
