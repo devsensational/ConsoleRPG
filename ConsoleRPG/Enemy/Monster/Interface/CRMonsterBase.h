@@ -26,7 +26,7 @@
  * @see IMonster
  * @see ICRCombat
  */
-class MonsterBase : public IMonster, ICRCombat
+class MonsterBase : public IMonster, public ICRCombat
 {
 private:
     // @brief 기본 체력값 상수
@@ -36,9 +36,11 @@ private:
 
 protected:
     std::string Name; //< 몬스터의 이름
+    int UniqueId; // 식별용 ID
     int CurrentHealth; //< 현재 체력
     int MaxHealth; //< 최대 체력
     int MonsterDamage; //< 공격력
+    
 
 public:
     /**
@@ -47,8 +49,9 @@ public:
      * @param monsterName 몬스터의 이름 (기본값: 빈 문자열)
      * @note 모든 기본 스탯은 상수값으로 초기화됩니다
      */
-    explicit MonsterBase(const std::string& monsterName = "")
+    explicit MonsterBase(const std::string& monsterName = "", const int& uniqueId = 0)
         : Name(monsterName)
+        , UniqueId(uniqueId)
         , CurrentHealth(DEFAULT_HEALTH)
         , MaxHealth(DEFAULT_HEALTH)
         , MonsterDamage(DEFAULT_DAMAGE)
@@ -142,5 +145,10 @@ public:
     MonsterHealthInfo GetHealthInfo() const noexcept
     {
         return { CurrentHealth, MaxHealth };
+    }
+
+    inline int GetUniqueId() const
+    {
+        return UniqueId;
     }
 };
