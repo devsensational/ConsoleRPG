@@ -18,7 +18,7 @@ public:
     static std::shared_ptr<MonsterBase> CreateMonster(EMonsterType monsterType, int level, int uniqueId);
 
 private:
-  /** @brief 팩토리 클래스의 인스턴스화를 방지하기 위한 private 생성자 */
-  CRMonsterFactory() = default;
+    /** @brief 팩토리 클래스의 인스턴스화를 방지하기 위한 private 생성자 */
+    CRMonsterFactory() = default;
 
 };
