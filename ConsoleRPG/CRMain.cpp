@@ -8,10 +8,8 @@ using namespace std;
 
 int main() 
 {
-    // new를 사용한 이유
     CRGameSystem* GameSystem = new CRGameSystem;
     GameSystem->GameStart();
-    // delete 필요하지않나?
 
     //cout << "=== 텍스트 RPG 게임 시작 ===" << endl;
 
