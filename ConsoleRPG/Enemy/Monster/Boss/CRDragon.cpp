@@ -1,6 +1,6 @@
 ﻿#include "CRDragon.h"
 
-Dragon::Dragon(int level, int uniqueId)  : MonsterBase("드레곤", uniqueId)
+Dragon::Dragon(int level)  : MonsterBase("드레곤")
 {
     Name = "Dragon";
     CurrentHealth = 4000;

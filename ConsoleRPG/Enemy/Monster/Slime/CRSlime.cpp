@@ -1,9 +1,9 @@
 ﻿#include "CRSlime.h"
 
-Slime::Slime(int level)
+Slime::Slime(int level) : MonsterBase("슬라임")
 {
   Name = "Slime";
-  CurrentHealth = 70 + level * 10;
-  MonsterDamage = 8 + level * 3;
+  CurrentHealth = 20 + level * 10;
+  MonsterDamage = 3 + level * 5;
   MonsterAttribute = EMonsterAttribute::EMA_Poison;
 }

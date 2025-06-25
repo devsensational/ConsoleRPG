@@ -20,7 +20,7 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
   switch (monsterType)
   {
   case EMonsterType::EMT_Troll:
-    return std::make_shared<Troll>(level);
+    return std::make_shared<Troll>(level, uniqueId);
     
   case EMonsterType::EMT_Goblin:
     return std::make_shared<Goblin>(level, uniqueId);
@@ -29,12 +29,41 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
     return std::make_shared<Orc>(level, uniqueId);
 
   case EMonsterType::EMT_Slime:
-    return std::make_shared<Slime>(level);
+    return std::make_shared<Slime>(level, uniqueId);
 
   case EMonsterType::EMT_Dragon:
     return std::make_shared<Dragon>(level, uniqueId);
   
   default:
+    return nullptr;
+  }
+}
+
+
+std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonsterByLevel(int level)
+{
+  if (0<level &&level < 3)
+  {
+    return std::make_shared<Slime>(level);
+  }
+  else if (0<level && level < 6)
+  {
+    return std::make_shared<Goblin>(level);
+  }
+  else if (0<level &&level < 8)
+  {
+    return std::make_shared<Orc>(level);
+  }
+  else if (0<level && level < 10)
+  {
+    return std::make_shared<Troll>(level);
+  }
+  else if (level ==10)
+  {
+    return std::make_shared<Dragon>(level);
+  }
+  else
+  {
     return nullptr;
   }
 }
