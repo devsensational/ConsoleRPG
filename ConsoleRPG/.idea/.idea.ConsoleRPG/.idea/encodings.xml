@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
-    <file url="file://$PROJECT_DIR$/CRDamageBoost.h" charset="EUC-KR" />
     <file url="file://$PROJECT_DIR$/CREventManager.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Character/CRCharacter.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Item/CRAttackBoost.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Item/CRItem.cpp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Item/CRItem.h" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Singleton.h" charset="UTF-16" />
   </component>
 </project>

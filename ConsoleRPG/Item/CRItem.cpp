@@ -5,5 +5,5 @@ using namespace std;
 
 void CRItem::use(CRCharacter* character) 
 {
-    // ±âº» ¾ÆÀÌÅÛ ±â´É
+    // ê¸°ë³¸ ì•„ì´í…œ ê¸°ëŠ¥
 }

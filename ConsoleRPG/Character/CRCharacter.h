@@ -3,17 +3,17 @@
 #include <iostream>
 #include <string>
 #include <memory>
-#include "CRInventory.h"
+#include "../Item/CRInventory.h"
 
 using namespace std;
 
 class CRCharacter 
 {
 private:
-    // ÀÎº¥Åä¸®¸¦ °¡¸£Å³ ¼ö ÀÖ´Â ½¦¾îµåÆ÷ÀÎÅÍ¸¦ Ä³¸¯ÅÍ°¡ µé°í ÀÖ´Â ÇüÅÂ
+    // ì¸ë²¤í† ë¦¬ë¥¼ ê°€ë¥´í‚¬ ìˆ˜ ìˆëŠ” ì‰ì–´ë“œí¬ì¸í„°ë¥¼ ìºë¦­í„°ê°€ ë“¤ê³  ìˆëŠ” í˜•íƒœ
     shared_ptr<CRInventory> spInventory;
 
-    // ÀÌº¥Æ® ¸®½ºÅÍ ID ÀúÀå
+    // ì´ë²¤íŠ¸ ë¦¬ìŠ¤í„° ID ì €ì¥
     int iListenerID;
 
 
@@ -22,6 +22,8 @@ protected:
     int iHealth;
     int iMaxHealth;
     int iAttack;
+    int iBaseAttack;
+    int iAttackBoost;
     int iLevel;
     int iExperience;
 
@@ -33,8 +35,10 @@ public:
     void useItem(int index);
 
     void takeDamage(int damage);
-    void takeHealPosition(int heal);
+    void takeHealPotion(int heal);
     void takeAttackBoost(int attack);
+    void resetBoost();
+    void gainExp(int exp);
     void levelUp();
     void showStatus();
 

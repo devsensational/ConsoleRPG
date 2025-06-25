@@ -4,12 +4,12 @@
 class CRAttackBoost : public CRItem {
 private:
     string strAttackBoost = "Attack Boost";
-    int defaultHealAmount = 0; 
+    int defaultAmount = 0; 
 
 
 public:
-    CRAttackBoost(string strName, int maxValue) :
-        CRItem(maxValue), strAttackBoost(strName)
+    CRAttackBoost(string strName, int boostAmount) :
+        CRItem(), strAttackBoost(strName), defaultAmount(boostAmount)
     {
 
     }
