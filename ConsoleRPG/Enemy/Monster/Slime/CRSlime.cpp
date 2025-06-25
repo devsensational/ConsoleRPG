@@ -1,6 +1,6 @@
 ﻿#include "CRSlime.h"
 
-Slime::Slime(int level) : MonsterBase("슬라임")
+Slime::Slime(int level, int uniqueId) : MonsterBase("슬라임")
 {
   Name = "Slime";
   CurrentHealth = 20 + level * 10;

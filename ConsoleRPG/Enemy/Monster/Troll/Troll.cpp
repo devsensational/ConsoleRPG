@@ -1,6 +1,6 @@
 ﻿#include "Troll.h"
 
-Troll::Troll(int level) : MonsterBase("트롤")
+Troll::Troll(int level, int uniqueId) : MonsterBase("트롤")
 {
     Name = "Troll";
     CurrentHealth = 70 + level * 10;

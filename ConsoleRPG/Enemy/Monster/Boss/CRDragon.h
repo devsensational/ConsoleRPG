@@ -4,5 +4,5 @@
 class Dragon : public MonsterBase
 {
 public:
-    Dragon(int level);
+    Dragon(int level, int uniqueId);
 };

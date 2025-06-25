@@ -3,6 +3,6 @@
 
 class Orc : public MonsterBase {
 public:
-  Orc(int level);
+  Orc(int level, int uniqueId);
 };
 
