@@ -15,7 +15,6 @@ CRGameMode::CRGameMode()
 	UserName = "default";
 
 	CombatManager = make_shared<CRCombatManager>();
-	PlayerCharacter = make_shared<CRCharacter>(UserName, 100, 10, 0);
 
 
 	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatLose, bind(&CRGameMode::CombatLose, this));
@@ -26,6 +25,7 @@ void CRGameMode::GameStart()
 {
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_SetUserName);
 	SetUserName();
+	PlayerCharacter = make_shared<CRCharacter>(UserName, 10000, 20, 0);
 	while(!bIsGameOver)
 	{
 		CombatManager->CombatInit(PlayerCharacter, GameLevel);
@@ -36,6 +36,8 @@ void CRGameMode::GameStart()
 		if (bIsGameOver) break;
 		Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_StoreOpen);
 		bIsCombatOver = false;
+
+		if (GameLevel >= 10) break;
 	}
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_GameOver);
 }

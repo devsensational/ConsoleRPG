@@ -1,9 +1,13 @@
+#include <Windows.h>
+
 #include "CRCombatManager.h"
 #include "Singleton.h"
 #include "CREventManager.h"
 #include "CRGameMode.h"
+#include "Enemy/Monster//Interface/CRMonsterBase.h"
 #include "Enemy/Monster/Slime/CRSlime.h"
 #include "Enemy/Monster/Goblin/CRGoblin.h"
+#include "Enemy/Monster/Factory/CRMonsterFactory.h"
 
 CRCombatManager::CRCombatManager()
 {
@@ -35,17 +39,20 @@ void CRCombatManager::CombatInit(const shared_ptr<ICRCombat> Unit, const int InL
 	PlayerCharacterList.push_back(Unit);
 	CombatSequence->push_back(Unit);
 
-	shared_ptr<ICRCombat> MonsterTemp = make_shared<Slime>(InLevel, 1);
+	shared_ptr<CRCharacter> Player = dynamic_pointer_cast<CRCharacter>(Unit);
+	Singleton<CREventManager<string, int, int>>::GetInstance()
+		.Broadcast(EEventType::EET_CharacterStatInit, Player->getName(), Player->getHealth(), Player->GetMaxHp());
+
+	shared_ptr<MonsterBase> MonsterTemp = CRMonsterFactory::CreateMonster(EMonsterType::EMT_Goblin, InLevel, 0);
 	MonsterMap[MonsterTemp->GetUniqueId()] = MonsterTemp;
 	MonsterList.push_back(MonsterTemp);
 	MonsterCount = MonsterMap.size();
 	CombatSequence->push_back(MonsterTemp);
-	
-	MonsterTemp = make_shared<Slime>(InLevel, 2);
-	MonsterMap[MonsterTemp->GetUniqueId()] = MonsterTemp;
-	MonsterList.push_back(MonsterTemp);
-	MonsterCount = MonsterMap.size();
-	//Todo: 내 캐릭터와 적이 될 유닛들을 생성 후 CombatSequence에 추가해야 함, 또한 행동력 수치가 있다면 행동력 수치를 기준으로 정렬
+
+	Singleton<CREventManager<string, int, int>>::GetInstance()
+		.Broadcast(EEventType::EET_MonsterStatInit, MonsterTemp->GetName(), MonsterTemp->GetCurrentMonsterHealth(), MonsterTemp->GetMaxMonsterHealth());
+
+	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_CombatApply);
 }
 
 /*
@@ -63,10 +70,13 @@ void CRCombatManager::CombatStart()
 		if ((*CombatSequence)[i]->GetUnitStatus() == EUnitStatus::EUS_Alive)
 		{
 			//cout << i << "번째 공격시도!" << '\n';
-			(*CombatSequence)[i]->Attack();
+			(*CombatSequence)[i]->Act();
+			Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_CombatApply);
+			Sleep(500);
 		}
 
 	}
+
 }
 
 /*
@@ -77,6 +87,8 @@ void CRCombatManager::CombatEnd()
 {
 	//Singleton<CREventManager<>>::GetInstance().Broadcast("CombatEnd");
 	CombatSequence->clear();
+
+
 	PlayerCharacterMap.clear();
 	PlayerCharacterList.clear();
 	MonsterMap.clear();
@@ -102,7 +114,7 @@ void CRCombatManager::PlayerCharacterAttack(int InDamage)
 
 	if (MonsterList[idx]->GetUnitStatus() == EUnitStatus::EUS_Dead) return;
 
-	cout << "몬스터를 공격!" << '\n';
+	//cout << "몬스터를 공격!" << '\n';
 	MonsterList[idx]->TakeDamage(InDamage);
 }
 
@@ -111,7 +123,7 @@ void CRCombatManager::MonsterAttack(int InDamage)
 	int idx = RandomIndexSelector(PlayerCharacterList.size() - 1);
 	if (PlayerCharacterList[idx]->GetUnitStatus() == EUnitStatus::EUS_Dead) return;
 
-	cout << "플레이어를 공격!2" << '\n';
+	//cout << "플레이어를 공격!2" << '\n';
 	PlayerCharacterList[idx]->TakeDamage(InDamage);
 }
 

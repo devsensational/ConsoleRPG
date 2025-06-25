@@ -2,14 +2,14 @@
 #include "CRItem.h"
 #include "CRCharacter.h"
 
-class CRRedPotion : public CRItem 
+class CRHealthPotion : public CRItem 
 {
 private:
     string strHealPosition = "Health Position";
     int defaultHealAmount = 0;
 
 public:
-    CRRedPotion(string strName, int healAmount, int maxValue = 100) : 
+    CRHealthPotion(string strName, int healAmount, int maxValue = 100) : 
         CRItem(maxValue), strHealPosition(strName), defaultHealAmount(healAmount)
     {
         

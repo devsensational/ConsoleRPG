@@ -12,14 +12,14 @@ using namespace std;
 
 
 CRCharacter::CRCharacter(string name, int health, int attack, const int InUniqueId)
-    : name(name), iHealth(health), iAttack(attack), iMaxHealth(health), iLevel(1), iExperience(0), UniqueId(InUniqueId),
-    spInventory(make_shared<CRInventory>())
+    : name(name), iHealth(health), iAttack(attack), iMaxHealth(health), iLevel(1), iExperience(0), UniqueId(InUniqueId)
 {
-    // 캐릭터 생성자에서 inventory shared_ptr객체 초기화.
-    //EventIds.push_back(Singleton<CREventManager<int>>::GetInstance()
-    //    .Subscribe(EEventType::EET_CharacterTakeDamage, bind(&CRCharacter::TakeDamage, this, placeholders::_1)));
+    spInventory = make_shared<CRInventory>(this);
+    
+    EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CharacterAttack, bind(&CRCharacter::Attack, this)));
+    EventIds.push_back(Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_InventoryItemSelect, bind(&CRCharacter::useItem, this, placeholders::_1)));
+    
     Status = EUnitStatus::EUS_Alive;
-
 
 }
 
@@ -33,7 +33,7 @@ shared_ptr<CRInventory>CRCharacter::getInventory()
 // 캐릭터가 몇번째 인덱스에 있는 아이템을 사용할것인지에 대한 함수
 void CRCharacter::useItem(int index)
 {
-    spInventory->useItem(index, this);
+    spInventory->useItem(index);
 }
 
 
@@ -41,6 +41,8 @@ void CRCharacter::useItem(int index)
 void CRCharacter::TakeDamage(int damage) 
 {
     iHealth = clamp(iHealth - damage, 0, iMaxHealth);
+    Singleton<CREventManager<string, int, int>>::GetInstance()
+        .Broadcast(EEventType::EET_CharacterStatInit, name, iHealth, iMaxHealth);
     if (iHealth <= 0) Dead();
 }
 
@@ -77,12 +79,19 @@ void CRCharacter::showStatus()
 void CRCharacter::Dead()
 {
     Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_CharacterDead, UniqueId);
-    //Singleton<CREventManager<int>>::GetInstance().Unsubscribe(EEventType::EET_CharacterTakeDamage, EventIds[0]);
+
+    Singleton<CREventManager<>>::GetInstance().Unsubscribe(EEventType::EET_CharacterAttack, EventIds[0]);
     Status = EUnitStatus::EUS_Dead;
+}
+
+void CRCharacter::Act()
+{
+    Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_CharacterAct);
+
+    
 }
 
 void CRCharacter::Attack()
 {
-    //Todo: CombatSystem에 있는 이벤트를 호출해서 공격하는 방식으로 변경할 것
     Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_CharacterAttack, iAttack);
 }

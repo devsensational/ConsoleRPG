@@ -47,9 +47,12 @@ public:
     string getName() const { return name; }
     int getHealth() const { return iHealth; }
     int getAttack() const { return iAttack; }
+    inline int GetMaxHp() const { return iMaxHealth; }
 
     // ICRCombat을(를) 통해 상속됨
+    void Act() override;
     void Attack() override;
+
 
     // ICRCombat을(를) 통해 상속됨
     inline int GetUniqueId() override { return UniqueId; }

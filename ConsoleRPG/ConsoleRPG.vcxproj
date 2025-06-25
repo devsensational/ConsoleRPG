@@ -143,7 +143,7 @@
     <ClCompile Include="Enemy\Monster\Enum\CRMonsterType.h" />
     <ClCompile Include="Enemy\Monster\Factory\CRMonsterFactory.cpp" />
     <ClCompile Include="CROrangePotion.cpp" />
-    <ClCompile Include="CRRedPotion.cpp" />
+    <ClCompile Include="CRHealthPotion.cpp" />
     <ClCompile Include="CRRogue.cpp" />
     <ClCompile Include="CRWarrior.cpp" />
     <ClCompile Include="CRWhitePotion.cpp" />
@@ -170,7 +170,7 @@
     <ClInclude Include="CRItem.h" />
     <ClInclude Include="CRMage.h" />
     <ClInclude Include="CROrangePotion.h" />
-    <ClInclude Include="CRRedPotion.h" />
+    <ClInclude Include="CRHealthPotion.h" />
     <ClInclude Include="CRRogue.h" />
     <ClInclude Include="CRWarrior.h" />
     <ClInclude Include="CRWhitePotion.h" />

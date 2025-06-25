@@ -122,19 +122,29 @@ public:
      */
     void TakeDamage(int value) override {
         CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
+
+        Singleton<CREventManager<string, int, int>>::GetInstance()
+            .Broadcast(EEventType::EET_MonsterStatInit, Name, CurrentHealth, MaxHealth);
+
         if (CurrentHealth <= 0) Dead();
+
         //cout << "TakeDamage: " << value << endl;
         //cout << "CurrentHP: " << CurrentHealth << endl;
     }
 
+    void Act() override {
+        Attack();
+    }
+
     /**
      * @brief 몬스터의 공격 함수
-     * 
+     *
      * 이벤트 시스템을 통해 캐릭터에게 데미지를 전달합니다.
      * @note EET_CharacterTakeDamage 이벤트를 발생시킵니다
      * @see CREventManager
      */
-    void Attack() override {
+    void Attack() override
+    {
         Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterAttack, MonsterDamage);
     }
     

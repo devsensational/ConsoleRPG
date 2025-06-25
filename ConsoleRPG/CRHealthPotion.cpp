@@ -1,4 +1,4 @@
-#include "CRRedPotion.h"
+#include "CRHealthPotion.h"
 #include <iostream>
 
 #include "CRCharacter.h"
@@ -6,7 +6,7 @@
 
 using namespace std;
 
-void CRRedPotion::use(CRCharacter* character) 
+void CRHealthPotion::use(CRCharacter* character) 
 {
     // 체력 회복
     cout << character->getName() << "이(가) 체력을 회복했습니다!" << endl;

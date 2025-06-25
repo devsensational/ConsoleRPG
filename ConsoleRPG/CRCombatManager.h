@@ -4,8 +4,6 @@
 #include <unordered_map>
 #include <random>
 
-#include "Enemy/Monster/Factory/CRMonsterFactory.h"
-
 class ICRCombat;
 
 using namespace std;
@@ -18,7 +16,6 @@ public:
 
 	/* 전투 관련 섹션 */
 protected:
-	CRMonsterFactory MonsterFactory;
 	unique_ptr<vector<shared_ptr<ICRCombat>>> CombatSequence;
 	unordered_map<int, shared_ptr<ICRCombat>> PlayerCharacterMap;
 	unordered_map<int, shared_ptr<ICRCombat>> MonsterMap;

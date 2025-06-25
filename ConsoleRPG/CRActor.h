@@ -10,7 +10,7 @@ class CRActor: public ICRCombat
 public:
 	CRActor();
 
-	virtual void Attack() override;
+	virtual void Act() override;
 	virtual void TakeDamage(int value);
 
 private:

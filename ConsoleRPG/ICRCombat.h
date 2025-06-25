@@ -10,9 +10,10 @@ protected:
 	ICRCombat() = default;
 
 public:
-	virtual void Attack() = 0;
+	virtual void Act() = 0;
 	virtual void TakeDamage(int value) = 0;
 	virtual void Dead() = 0;
+	virtual void Attack() = 0;
 	virtual int GetUniqueId() = 0;
 	virtual EUnitStatus GetUnitStatus() = 0;
 
