@@ -4,6 +4,7 @@
 #include "../../../Singleton.h"
 #include "../../../CREventManager.h"
 #include "../Struct/CRMonsterHealthInfo.h"
+#include "../Enum/CRMonsterType.h"
 #include "IMonster.h"
 #include <string>
 #include <algorithm>
@@ -33,6 +34,7 @@ private:
     static constexpr int DEFAULT_HEALTH = 100;
     // @brief 기본 공격력 상수
     static constexpr int DEFAULT_DAMAGE = 10;
+    static constexpr EMonsterAttribute DEFAULT_ATTRIBUTE = EMonsterAttribute::EMA_None;
 
 protected:
     std::string Name; //< 몬스터의 이름
@@ -40,6 +42,7 @@ protected:
     int CurrentHealth; //< 현재 체력
     int MaxHealth; //< 최대 체력
     int MonsterDamage; //< 공격력
+    EMonsterAttribute MonsterAttribute; // < 속성
     
 
 public:
@@ -50,11 +53,12 @@ public:
      * @note 모든 기본 스탯은 상수값으로 초기화됩니다
      */
     explicit MonsterBase(const std::string& monsterName = "", const int& uniqueId = 0)
-        : Name(monsterName)
-        , UniqueId(uniqueId)
-        , CurrentHealth(DEFAULT_HEALTH)
-        , MaxHealth(DEFAULT_HEALTH)
-        , MonsterDamage(DEFAULT_DAMAGE)
+        : Name(monsterName),
+        UniqueId(uniqueId),
+        CurrentHealth(DEFAULT_HEALTH),
+        MaxHealth(DEFAULT_HEALTH),
+        MonsterDamage(DEFAULT_DAMAGE),
+        MonsterAttribute(DEFAULT_ATTRIBUTE)
     {
     }
 
@@ -81,10 +85,8 @@ public:
      * @return std::string 몬스터의 이름
      * @note 이 메서드는 예외를 발생시키지 않습니다
      */
-    std::string GetName() const noexcept override
-    {
-        return Name;
-    }
+    std::string GetName() const noexcept override;
+
 
     /**
      * @brief 몬스터의 현재 체력을 반환
@@ -92,10 +94,7 @@ public:
      * @return int 현재 체력값
      * @note 이 메서드는 예외를 발생시키지 않습니다
      */
-    int GetCurrentMonsterHealth() const noexcept override
-    {
-        return CurrentHealth;
-    }
+    int GetCurrentMonsterHealth() const noexcept override;
 
     /**
      * @brief 몬스터의 최대 체력을 반환
@@ -103,10 +102,7 @@ public:
      * @return int 최대 체력값
      * @note 이 메서드는 예외를 발생시키지 않습니다
      */
-    int GetMaxMonsterHealth() const noexcept override
-    {
-        return MaxHealth;
-    }
+    int GetMaxMonsterHealth() const noexcept override;
 
     /**
      * @brief 몬스터가 데미지를 받는 함수
@@ -115,11 +111,7 @@ public:
      * @note 음수 데미지는 무시됩니다
      * @note 체력은 0과 최대체력 사이로 제한됩니다
      */
-    void TakeDamage(int value) override {
-        CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
-        cout << "TakeDamage: " << value << endl;
-        cout << "CurrentHP: " << CurrentHealth << endl;
-    }
+    void TakeDamage(int value) override;
 
     /**
      * @brief 몬스터의 공격 함수
@@ -128,12 +120,7 @@ public:
      * @note EET_CharacterTakeDamage 이벤트를 발생시킵니다
      * @see CREventManager
      */
-    void Attack() override {
-        Singleton<CREventManager<int>>::GetInstance().Broadcast(
-            EEventType::EET_CharacterTakeDamage, 
-            MonsterDamage
-        );
-    }
+    void Attack() override;
     
 
     /**
@@ -142,13 +129,13 @@ public:
      * @return HealthInfo + CurrentHealth, MaxHealth (현재 체력과 최대 체력을 포함한 구조체)
      * @note 이 메서드는 예외를 발생시키지 않습니다
      */
-    MonsterHealthInfo GetHealthInfo() const noexcept
-    {
-        return { CurrentHealth, MaxHealth };
-    }
+    MonsterHealthInfo GetHealthInfo() const noexcept;
 
-    inline int GetUniqueId() const
-    {
-        return UniqueId;
-    }
+    /**
+     * @brief 몬스터의 고유 식별자를 반환합니다.
+     *
+     * @return int 고유 식별자 (UniqueId)
+     * @note 이 메서드는 예외를 발생시키지 않습니다.
+     */
+    inline int GetUniqueId() const;
 };
