@@ -1,4 +1,5 @@
 #pragma once
+#include "ConsoleRPG.h"
 
 //Interface
 // 
@@ -11,6 +12,9 @@ protected:
 public:
 	virtual void Attack() = 0;
 	virtual void TakeDamage(int value) = 0;
+	virtual void Dead() = 0;
+	virtual int GetUniqueId() = 0;
+	virtual EUnitStatus GetUnitStatus() = 0;
 
 	virtual ~ICRCombat() = default;
 };

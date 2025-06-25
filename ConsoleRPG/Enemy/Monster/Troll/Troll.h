@@ -4,5 +4,5 @@
 
 class Troll : public MonsterBase {
 public:
-    Troll(int level);
+    Troll(int level, int UniqueId);
 };

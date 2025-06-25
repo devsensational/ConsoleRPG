@@ -35,12 +35,14 @@ private:
     static constexpr int DEFAULT_DAMAGE = 10;
 
 protected:
-    std::string Name; //< 몬스터의 이름
-    int UniqueId; // 식별용 ID
-    int CurrentHealth; //< 현재 체력
-    int MaxHealth; //< 최대 체력
-    int MonsterDamage; //< 공격력
-    
+    std::string Name;   //< 몬스터의 이름
+    int UniqueId;       // 식별용 ID
+    int CurrentHealth;  //< 현재 체력
+    int MaxHealth;      //< 최대 체력
+    int MonsterDamage;  //< 공격력
+
+    EUnitStatus Status = EUnitStatus::EUS_Alive;
+    vector<int> EventIds; // Event Id 저장용
 
 public:
     /**
@@ -56,6 +58,9 @@ public:
         , MaxHealth(DEFAULT_HEALTH)
         , MonsterDamage(DEFAULT_DAMAGE)
     {
+        //EventIds.push_back(Singleton<CREventManager<int>>::GetInstance()
+        //    .Subscribe(EEventType::EET_MonsterTakeDamage, bind(&MonsterBase::TakeDamage, this, placeholders::_1)));
+        Status = EUnitStatus::EUS_Alive;
     }
 
     // @brief 가상 소멸자
@@ -117,8 +122,9 @@ public:
      */
     void TakeDamage(int value) override {
         CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
-        cout << "TakeDamage: " << value << endl;
-        cout << "CurrentHP: " << CurrentHealth << endl;
+        if (CurrentHealth <= 0) Dead();
+        //cout << "TakeDamage: " << value << endl;
+        //cout << "CurrentHP: " << CurrentHealth << endl;
     }
 
     /**
@@ -129,10 +135,7 @@ public:
      * @see CREventManager
      */
     void Attack() override {
-        Singleton<CREventManager<int>>::GetInstance().Broadcast(
-            EEventType::EET_CharacterTakeDamage, 
-            MonsterDamage
-        );
+        Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterAttack, MonsterDamage);
     }
     
 
@@ -147,8 +150,16 @@ public:
         return { CurrentHealth, MaxHealth };
     }
 
-    inline int GetUniqueId() const
+    void Dead() override
     {
-        return UniqueId;
+        if (Status == EUnitStatus::EUS_Dead) return; // 이미 죽었으면 아무것도 하지 않음
+
+        cout << Name << "이(가) 죽었다!" << '\n';
+        Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterDead, UniqueId);
+        //Singleton<CREventManager<int>>::GetInstance().Unsubscribe(EEventType::EET_MonsterTakeDamage, EventIds[0]);
+        Status = EUnitStatus::EUS_Dead;
     }
+
+    inline int GetUniqueId() override { return UniqueId; }
+    inline EUnitStatus GetUnitStatus() override { return Status; }
 };

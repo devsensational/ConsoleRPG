@@ -7,7 +7,12 @@ CRConsoleUI::CRConsoleUI()
 	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_SetUserName, bind(&CRConsoleUI::SelectName, this));
 	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_StoreOpen, bind(&CRConsoleUI::PrintStoreMenu, this));
 	Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_CharacterTakeDamage, bind(&CRConsoleUI::PrintMonsterAttackLog, this, placeholders::_1));
+	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatLose, bind(&CRConsoleUI::PrintCombatLose, this));
+	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatWin, bind(&CRConsoleUI::PrintCombatWin, this));
+	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_GameOver, bind(&CRConsoleUI::PrintGameOver, this));
 
+
+	
 }
 
 void CRConsoleUI::SelectName()
@@ -41,5 +46,20 @@ void CRConsoleUI::PrintCombatUI()
 
 void CRConsoleUI::PrintMonsterAttackLog(int damage)
 {
-	cout << damage << '\n';
+	cout << "몬스터가 " << damage << "데미지의 공격! " << '\n';
 }
+
+void CRConsoleUI::PrintCombatLose()
+{
+	cout << "전투에서 패배했습니다!" << '\n';
+}
+void CRConsoleUI::PrintCombatWin()
+{
+	cout << "전투에서 승리했습니다!" << '\n';
+}
+
+void CRConsoleUI::PrintGameOver()
+{
+	cout << "GAME OVER" << '\n';
+}
+

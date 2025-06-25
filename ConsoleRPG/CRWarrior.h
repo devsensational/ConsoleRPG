@@ -8,8 +8,8 @@ private:
     int iStrength = 0;
 
 public:
-    CRWarrior(string name, int health, int attack, int strength)
-        : CRCharacter(name, health, attack), iStrength(strength)
+    CRWarrior(string name, int health, int attack, int strength, int InUniqueId)
+        : CRCharacter(name, health, attack, InUniqueId), iStrength(strength)
     {
 
     }

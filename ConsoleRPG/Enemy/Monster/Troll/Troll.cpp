@@ -1,8 +1,9 @@
 ﻿#include "Troll.h"
 
-Troll::Troll(int level)
+Troll::Troll(int level, int InUniqueId)
 {
     Name = "Troll";
+    UniqueId = InUniqueId;
     CurrentHealth = 70 + level * 10;
     MonsterDamage = 8 + level * 3;
 }

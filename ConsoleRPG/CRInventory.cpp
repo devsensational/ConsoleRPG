@@ -41,19 +41,18 @@ void CRInventory::createItem(int index)
 {
     switch (index)
     {
-    case 1: addItem(make_shared<CRRedPotion>("RedPotion", 20));
-
+    case 1: 
+        addItem(make_shared<CRRedPotion>("RedPotion", 20));
         break;
-    case 2: addItem(make_shared<CRRedPotion>("OrangePotion", 20));
-
+    case 2: 
+        addItem(make_shared<CRRedPotion>("OrangePotion", 20));
         break;
-    case 3: addItem(make_shared<CRRedPotion>("WhitePotion", 20));
-
+    case 3: 
+        addItem(make_shared<CRRedPotion>("WhitePotion", 20));
         break;
-    case 4: addItem(make_shared<CRAttackBoost>("AttackBoost", 20));
-
+    case 4: 
+        addItem(make_shared<CRAttackBoost>("AttackBoost", 20));
         break;
-
     default:
         break;
     }

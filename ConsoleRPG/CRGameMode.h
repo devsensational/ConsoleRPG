@@ -25,6 +25,11 @@ public:
 
 	void SetUserName();
 
+protected:
+	void CombatOver();
+	void CombatWin();
+	void CombatLose();
+
 private:
 	shared_ptr<CRCombatManager> CombatManager;
 	shared_ptr<CRCharacter> PlayerCharacter;

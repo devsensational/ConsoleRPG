@@ -17,7 +17,8 @@ private:
 
     // 이벤트 리스터 ID 저장
     int iListenerID = 0;
-
+    int UniqueId = 0;
+    vector<int> EventIds;
 
 protected:
     string name;
@@ -27,18 +28,21 @@ protected:
     int iLevel;
     int iExperience;
 
+    EUnitStatus Status = EUnitStatus::EUS_Default;
+
 public:
-    CRCharacter(string name, int health, int attack);
+    CRCharacter(string name, int health, int attack, const int InUniqueId);
     virtual ~CRCharacter() {}
 
     shared_ptr<CRInventory> getInventory();
     void useItem(int index);
 
-    void TakeDamage(int damage);
+    void TakeDamage(int damage) override;
     void takeHealPosition(int heal);
     void takeAttackBoost(int attack);
     void levelUp();
     void showStatus();
+    void Dead() override;
 
     string getName() const { return name; }
     int getHealth() const { return iHealth; }
@@ -46,4 +50,8 @@ public:
 
     // ICRCombat을(를) 통해 상속됨
     void Attack() override;
+
+    // ICRCombat을(를) 통해 상속됨
+    inline int GetUniqueId() override { return UniqueId; }
+    inline EUnitStatus GetUnitStatus() override { return Status; }
 };
