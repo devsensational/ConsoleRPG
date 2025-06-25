@@ -181,6 +181,7 @@
     <ClInclude Include="Enemy\Monster\Interface\IMonster.h" />
     <ClInclude Include="Enemy\Monster\Orc\CROrc.h" />
     <ClInclude Include="Enemy\Monster\Slime\CRSlime.h" />
+    <ClInclude Include="Enemy\Monster\Struct\CRLevelRange.h" />
     <ClInclude Include="Enemy\Monster\Struct\CRMonsterHealthInfo.h" />
     <ClInclude Include="Enemy\Monster\Troll\Troll.h" />
     <ClInclude Include="ICRCombat.h" />
