@@ -3,6 +3,7 @@
 #include "../Goblin/CRGoblin.h"
 #include "../Orc/CROrc.h"
 #include "../Slime/CRSlime.h"
+#include "../Boss/CRDragon.h"
 
 
 /**
@@ -29,6 +30,9 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
 
   case EMonsterType::EMT_Slime:
     return std::make_shared<Slime>(level);
+
+  case EMonsterType::EMT_Dragon:
+    return std::make_shared<Dragon>(level, uniqueId);
   
   default:
     return nullptr;
