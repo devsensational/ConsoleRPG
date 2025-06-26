@@ -20,5 +20,36 @@ enum class EMonsterType
   EMT_Goblin,
 
   /* 슬라임 */
-  EMT_Slime
+  EMT_Slime,
+
+  EMT_Dragon
+};
+
+/**
+ * @brief 몬스터 속성을 정의하는 열거형
+ *
+ * 게임 내의 몬스터들이 가질 수 있는 다양한 속성을 정의합니다.
+ * 각 속성은 특정 특성과 상호작용을 나타내며, 전투 및 게임 메커니즘에 영향을 미칠 수 있습니다.
+ *
+ * @note 속성은 몬스터의 공격이나 방어, 특정 조건에서의 성능에 영향을 줄 수 있습니다.
+ */
+enum class EMonsterAttribute
+{
+  /* 속성없음 */
+  EMA_None,
+
+  /* 불속성 */
+  EMA_Fire,
+
+  /* 물속성 */
+  EMA_Water,
+
+  /* 땅속성 */
+  EMA_Earth,
+
+  /* 바람속성 */
+  EMA_Wind,
+
+  /* 독속성 */
+  EMA_Poison
 };
