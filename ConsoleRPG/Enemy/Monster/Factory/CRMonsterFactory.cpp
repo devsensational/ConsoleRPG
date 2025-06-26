@@ -65,13 +65,21 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
  */
 std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonsterByLevel(int level, int uniqueId)
 {
-  if (level < 0 || level > 10)
-    return nullptr;
+    if (level <= 0 || level > 11) {
+      return nullptr;
+    }
 
   try {
-      return LevelMappings[level].creator(level, uniqueId);
-  } catch (const std::bad_alloc&) {
-    return nullptr;
+      for (const auto& range : LevelMappings)
+      {
+          if (level >= range.minLevel && level <= range.maxLevel)
+          {
+              return range.creator(level, uniqueId);
+          }
+      }
+  }
+  catch (const std::bad_alloc&) {
+      return nullptr;
   }
 
   return nullptr;

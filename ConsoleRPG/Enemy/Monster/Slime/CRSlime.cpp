@@ -4,8 +4,8 @@ Slime::Slime(int level, int InUniqueId)
 {
   Name = "Slime";
   UniqueId = InUniqueId;
-  CurrentHealth = 70 + level * 10;
+  CurrentHealth = 30 + level * 5;
   MaxHealth = CurrentHealth;
-  MonsterDamage = 8 + level * 3;
+  MonsterDamage = 5 + level;
   MonsterAttribute = EMonsterAttribute::EMA_Poison;
 }

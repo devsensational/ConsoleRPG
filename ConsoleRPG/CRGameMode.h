@@ -34,7 +34,7 @@ private:
 	shared_ptr<CRCombatManager> CombatManager;
 	shared_ptr<CRCharacter> PlayerCharacter;
 
-	int GameLevel = 0;
+	int GameLevel = 1;
 
 	bool bIsGameOver = false;
 	bool bIsCombatOver = false;

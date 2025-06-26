@@ -34,7 +34,7 @@ void CRGameMode::GameStart()
 			CombatManager->CombatStart();
 		}
 		if (bIsGameOver) break;
-		if (GameLevel >= 10)
+		if (GameLevel >= 11)
 		{
 			cout << "°ÔÀÓ ½Â¸®!!" << '\n';
 			break;

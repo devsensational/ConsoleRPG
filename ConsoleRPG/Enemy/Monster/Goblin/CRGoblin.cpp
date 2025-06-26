@@ -3,8 +3,8 @@
 
 Goblin::Goblin(int level, int uniqueId) : MonsterBase("고블린", uniqueId) 
 {
-	CurrentHealth = 30 + level * 5;
-	MonsterDamage = 5 + level;
+	CurrentHealth = 70 + level * 10;
+	MonsterDamage = 8 + level * 3;
 	MaxHealth = CurrentHealth;
 	Status = EUnitStatus::EUS_Alive;
 }
