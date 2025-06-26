@@ -74,8 +74,8 @@ void CRCharacter::LevelUp()
     if (Level < 10) 
     {
         Level++;
-        MaxHp += 20;
-        Damage += 5;
+        MaxHp += 15*Level;
+        Damage += 6*Level;
         CurrentHp = MaxHp;  // 레벨업 시 체력 회복
         Experience = 0;
         Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()

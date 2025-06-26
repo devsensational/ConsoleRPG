@@ -25,7 +25,7 @@ void CRGameMode::GameStart()
 {
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_SetUserName);
 	SetUserName();
-	PlayerCharacter = make_shared<CRCharacter>(UserName, 1000000, 60, 0);
+	PlayerCharacter = make_shared<CRCharacter>(UserName, 200, 30, 0);
 	while(!bIsGameOver)
 	{
 		CombatManager->CombatInit(PlayerCharacter, GameLevel);

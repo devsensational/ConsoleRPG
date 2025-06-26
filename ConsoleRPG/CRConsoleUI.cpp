@@ -159,7 +159,7 @@ void CRConsoleUI::PrintStoreMenu()
 	while (!Exit)
 	{
 		cout << "상점" << '\n';
-		cout << "1. 포션 (50 골드)" << '\n';
+		cout << "1. 포션 (40 골드)" << '\n';
 		cout << "2. 공격력 증가 스크롤 (100 골드)" << '\n';
 		cout << "상점 메뉴를 선택해주세요 (0: 취소): ";
 		cin >> Select;
@@ -168,7 +168,7 @@ void CRConsoleUI::PrintStoreMenu()
 			return;
 		}
 		else if (Select == "1") {
-			itemPrice = 50;
+			itemPrice = 40;
 			Exit = true;
 		}
 		else if (Select == "2") {

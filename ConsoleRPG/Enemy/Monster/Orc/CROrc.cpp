@@ -1,9 +1,9 @@
 ﻿#include "CROrc.h"
 
-Orc::Orc(int level, int InUniqueId) : MonsterBase("오크", InUniqueId) {
+Orc::Orc(int level, int InUniqueId)  {
   Name = "Orc";
-  CurrentHealth = 50 + level * 7;
+  CurrentHealth = 50 + level * 20;
   MaxHealth = CurrentHealth;
-  MonsterDamage = 10 + level * 2;
+  MonsterDamage = 7 + level * 5;
   MonsterAttribute = EMonsterAttribute::EMA_Fire;
 }

@@ -55,7 +55,7 @@ void CRInventory::CreateItem(int index)
     switch (index)
     {
     case 1: 
-        addItem(make_shared<CRHealthPotion>("RedPotion", 20));
+        addItem(make_shared<CRHealthPotion>("RedPotion", 120));
         Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "체력 포션을 획득했습니다!");
         break;
     case 2: 

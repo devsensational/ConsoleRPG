@@ -1,11 +1,11 @@
 ﻿#include "Troll.h"
 
-Troll::Troll(int level, int InUniqueId)
+Troll::Troll(int level, int InUniqueId) 
 {
     Name = "Troll";
     UniqueId = InUniqueId;
-    CurrentHealth = 70 + level * 10;
+    CurrentHealth = 70 + level * 20;
     MaxHealth = CurrentHealth;
-    MonsterDamage = 8 + level * 3;
+    MonsterDamage = 10 + level * 5;
     MonsterAttribute = EMonsterAttribute::EMA_Earth;
 }
