@@ -23,6 +23,9 @@ CRGameMode::CRGameMode()
 
 void CRGameMode::GameStart()
 {
+	cout << "Console RPG" << '\n';
+	cout << "해당 게임은 10 스테이지 까지 존재합니다." << '\n';
+
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_SetUserName);
 	SetUserName();
 	PlayerCharacter = make_shared<CRCharacter>(UserName, 200, 30, 0);
