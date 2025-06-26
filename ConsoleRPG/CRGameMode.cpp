@@ -25,7 +25,7 @@ void CRGameMode::GameStart()
 {
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_SetUserName);
 	SetUserName();
-	PlayerCharacter = make_shared<CRCharacter>(UserName, 10000, 20, 0);
+	PlayerCharacter = make_shared<CRCharacter>(UserName, 200, 30, 0);
 	while(!bIsGameOver)
 	{
 		CombatManager->CombatInit(PlayerCharacter, GameLevel);
@@ -34,10 +34,13 @@ void CRGameMode::GameStart()
 			CombatManager->CombatStart();
 		}
 		if (bIsGameOver) break;
+		if (GameLevel >= 10)
+		{
+			cout << "°ÔÀÓ ½Â¸®!!" << '\n';
+			break;
+		}
 		Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_StoreOpen);
 		bIsCombatOver = false;
-
-		if (GameLevel >= 10) break;
 	}
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_GameOver);
 }

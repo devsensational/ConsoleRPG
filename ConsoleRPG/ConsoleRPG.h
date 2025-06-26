@@ -1,29 +1,34 @@
 #pragma once
+#include <random>
 
 #define TEXT(X) make_shared<string>(X)
 
+using namespace std;
+
 enum EEventType
 {
-	EET_CharacterTakeDamage,// 캐릭터가 데미지를 받을 때 호출(예시: 몬스터가 Attack()으로 Broadcast, 캐릭터가 TakeDamage()를 Subscribe)
-	EET_MonsterTakeDamage,	// 몬스터가 데미지를 받을 때 호출
-	EET_CombatApply,		// 전투가 수행될 때 호출
-	EET_CombatWin,			// 전투에서 승리했을 때 호출
-	EET_CombatLose,			// 전투에서 패배했을 때 호출
-	EET_SetUserName,		// 닉네임 지정할 때 호출
-	EET_CharacterAct,		// 캐릭터가 행동을 지정해야 할 때 호출
-	EET_CharacterDead,		// 캐릭터가 사망했을 때 호출
-	EET_CharacterAttack,	// 캐릭터가 공격할 때 호출
-	EET_StoreOpen,			// 상점 열릴 때 호출
-	EET_StoreItemSelect,	// 상점에 있는 아이템을 선택했을 때 호출
-	EET_InventoryOpen,		// 인벤토리 목록을 불러올 때 호출
-	EET_InventoryItemSelect,// 인벤토리에 있는 아이템을 선택했을 때 호출
-	EET_ShowInventoryList,  // 인벤토리 목록을 UI로 보낼 때 호출
-	EET_MonsterRandomDrop,	// 몬스터가 아이템을 드랍할 때 호출
-	EET_MonsterDead,		// 몬스터가 죽었을 때 호출
-	EET_MonsterAttack,		// 몬스터가 공격할 때 호출
-	EET_CharacterStatInit,	// 캐릭터 정보를 불러올 때 호출
-	EET_MonsterStatInit,	// 몬스터 정보를 불러올 때 호출
-	EET_GameOver,			// 게임 종료
+	EET_CharacterTakeDamage,		// 캐릭터가 데미지를 받을 때 호출(예시: 몬스터가 Attack()으로 Broadcast, 캐릭터가 TakeDamage()를 Subscribe)
+	EET_MonsterTakeDamage,			// 몬스터가 데미지를 받을 때 호출
+	EET_CombatApply,				// 전투가 수행될 때 호출
+	EET_CombatWin,					// 전투에서 승리했을 때 호출
+	EET_CombatLose,					// 전투에서 패배했을 때 호출
+	EET_SetUserName,				// 닉네임 지정할 때 호출
+	EET_CharacterAct,				// 캐릭터가 행동을 지정해야 할 때 호출
+	EET_CharacterDead,				// 캐릭터가 사망했을 때 호출
+	EET_CharacterAttack,			// 캐릭터가 공격할 때 호출
+	EET_StoreOpen,					// 상점 열릴 때 호출
+	EET_StoreItemSelect,			// 상점에 있는 아이템을 선택했을 때 호출
+	EET_InventoryOpen,				// 인벤토리 목록을 불러올 때 호출
+	EET_InventoryItemSelect,		// 인벤토리에 있는 아이템을 선택했을 때 호출
+	EET_ShowInventoryList,			// 인벤토리 목록을 UI로 보낼 때 호출
+	EET_MonsterRandomDrop,			// 몬스터가 아이템을 드랍할 때 호출
+	EET_MonsterDead,				// 몬스터가 죽었을 때 호출
+	EET_MonsterAttack,				// 몬스터가 공격할 때 호출
+	EET_CharacterCombatStatInit,	// 캐릭터 전투 정보를 불러올 때 호출
+	EET_MonsterCombatStatInit,		// 몬스터 전투정보를 불러올 때 호출
+	EET_CharacterStatInit,			// 캐릭터 정보를 불러올 때 호출
+	EET_PushLog,					// 로그를 출력해야할 때 호출
+	EET_GameOver,					// 게임 종료시 호출
 	EET_END = 99,
 };
 
@@ -35,3 +40,13 @@ enum EUnitStatus
 
 	EUS_END = 99,
 };
+
+
+static int RandomIndexSelector(int InMinValue, int InMaxValue)
+{
+	random_device rd;                     // 하드웨어 시드 기반 난수 생성기
+	mt19937 gen(rd());
+	uniform_int_distribution<> dist(InMinValue, InMaxValue); // [InMinValue, InMaxValue] 범위 정수 랜덤
+
+	return dist(gen);
+}

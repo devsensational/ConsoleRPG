@@ -39,6 +39,6 @@ public:
 	void PlayerCharacterDead(int InUniqueId);
 	void MonsterDead(int InUniqueId);
 
-	int RandomIndexSelector(int InMaxValue);
+	//int RandomIndexSelector(int InMaxValue);
 };
 

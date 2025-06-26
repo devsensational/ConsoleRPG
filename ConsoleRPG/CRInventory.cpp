@@ -37,6 +37,7 @@ void CRInventory::useItem(int index)
 {
     if (index >= 0 && index < items.size()) 
     {
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "아이템을 사용했습니다!");
         items[index]->use(Owner);
         items.erase(items.begin() + index);
     }

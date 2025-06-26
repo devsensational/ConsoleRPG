@@ -22,11 +22,12 @@ private:
 
 protected:
     string name;
-    int iHealth;
-    int iMaxHealth;
-    int iAttack;
-    int iLevel;
-    int iExperience;
+    int CurrentHp;
+    int MaxHp;
+    int Damage;
+    int Level;
+    int Experience;
+    int Gold;
 
     EUnitStatus Status = EUnitStatus::EUS_Default;
 
@@ -38,16 +39,18 @@ public:
     void useItem(int index);
 
     void TakeDamage(int damage) override;
-    void takeHealPosition(int heal);
-    void takeAttackBoost(int attack);
-    void levelUp();
-    void showStatus();
+    void Heal(int heal);
+    void DamageBoost(int attack);
+    void LevelUp();
+    void GetExp();
+    void GetGold();
+    void ShowStatus();
     void Dead() override;
 
-    string getName() const { return name; }
-    int getHealth() const { return iHealth; }
-    int getAttack() const { return iAttack; }
-    inline int GetMaxHp() const { return iMaxHealth; }
+    string GetName() const { return name; }
+    int getHealth() const { return CurrentHp; }
+    int getAttack() const { return Damage; }
+    inline int GetMaxHp() const { return MaxHp; }
 
     // ICRCombat을(를) 통해 상속됨
     void Act() override;

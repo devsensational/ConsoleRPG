@@ -41,7 +41,7 @@ void CRCombatManager::CombatInit(const shared_ptr<ICRCombat> Unit, const int InL
 
 	shared_ptr<CRCharacter> Player = dynamic_pointer_cast<CRCharacter>(Unit);
 	Singleton<CREventManager<string, int, int>>::GetInstance()
-		.Broadcast(EEventType::EET_CharacterStatInit, Player->getName(), Player->getHealth(), Player->GetMaxHp());
+		.Broadcast(EEventType::EET_CharacterCombatStatInit, Player->GetName(), Player->getHealth(), Player->GetMaxHp());
 
 	shared_ptr<MonsterBase> MonsterTemp = CRMonsterFactory::CreateMonster(EMonsterType::EMT_Goblin, InLevel, 0);
 	MonsterMap[MonsterTemp->GetUniqueId()] = MonsterTemp;
@@ -50,7 +50,7 @@ void CRCombatManager::CombatInit(const shared_ptr<ICRCombat> Unit, const int InL
 	CombatSequence->push_back(MonsterTemp);
 
 	Singleton<CREventManager<string, int, int>>::GetInstance()
-		.Broadcast(EEventType::EET_MonsterStatInit, MonsterTemp->GetName(), MonsterTemp->GetCurrentMonsterHealth(), MonsterTemp->GetMaxMonsterHealth());
+		.Broadcast(EEventType::EET_MonsterCombatStatInit, MonsterTemp->GetName(), MonsterTemp->GetCurrentMonsterHealth(), MonsterTemp->GetMaxMonsterHealth());
 
 	Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_CombatApply);
 }
@@ -73,6 +73,8 @@ void CRCombatManager::CombatStart()
 			(*CombatSequence)[i]->Act();
 			Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_CombatApply);
 			Sleep(500);
+			if (PlayerCount <= 0) CombatLose();
+			if (MonsterCount <= 0) CombatWin();
 		}
 
 	}
@@ -110,7 +112,7 @@ void CRCombatManager::CombatLose()
 
 void CRCombatManager::PlayerCharacterAttack(int InDamage)
 {
-	int idx = RandomIndexSelector(MonsterList.size() - 1);
+	int idx = 0;
 
 	if (MonsterList[idx]->GetUnitStatus() == EUnitStatus::EUS_Dead) return;
 
@@ -120,7 +122,7 @@ void CRCombatManager::PlayerCharacterAttack(int InDamage)
 
 void CRCombatManager::MonsterAttack(int InDamage)
 {
-	int idx = RandomIndexSelector(PlayerCharacterList.size() - 1);
+	int idx = 0;
 	if (PlayerCharacterList[idx]->GetUnitStatus() == EUnitStatus::EUS_Dead) return;
 
 	//cout << "플레이어를 공격!2" << '\n';
@@ -130,20 +132,9 @@ void CRCombatManager::MonsterAttack(int InDamage)
 void CRCombatManager::PlayerCharacterDead(int UniqueId)
 {
 	PlayerCount--;
-	if (PlayerCount <= 0) CombatLose();
 }
 
 void CRCombatManager::MonsterDead(int UniqueId)
 {
 	MonsterCount--;
-	if (MonsterCount <= 0) CombatWin();
-}
-
-int CRCombatManager::RandomIndexSelector(int InMaxValue)
-{
-	random_device rd;                     // 하드웨어 시드 기반 난수 생성기
-	mt19937 gen(rd());                    
-	uniform_int_distribution<> dist(0, InMaxValue); // [0, InMaxValue] 범위 정수 랜덤
-
-	return dist(gen);
 }

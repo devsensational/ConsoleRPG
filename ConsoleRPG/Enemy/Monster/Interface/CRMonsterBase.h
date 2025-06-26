@@ -124,7 +124,7 @@ public:
         CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
 
         Singleton<CREventManager<string, int, int>>::GetInstance()
-            .Broadcast(EEventType::EET_MonsterStatInit, Name, CurrentHealth, MaxHealth);
+            .Broadcast(EEventType::EET_MonsterCombatStatInit, Name, CurrentHealth, MaxHealth);
 
         if (CurrentHealth <= 0) Dead();
 
@@ -164,8 +164,8 @@ public:
     {
         if (Status == EUnitStatus::EUS_Dead) return; // 이미 죽었으면 아무것도 하지 않음
 
-        cout << Name << "이(가) 죽었다!" << '\n';
         Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterDead, UniqueId);
+        //Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, Name + "이(가) 쓰러졌다!");
         //Singleton<CREventManager<int>>::GetInstance().Unsubscribe(EEventType::EET_MonsterTakeDamage, EventIds[0]);
         Status = EUnitStatus::EUS_Dead;
     }

@@ -22,14 +22,22 @@ public:
 	void PrintCombatUI();
 	void InitCharacterStatus(const string& InName, const int &InCurrentHp, const int &InMaxHp);
 	void InitMonsterStatus(const string& InName, const int& InCurrentHp, const int& InMaxHp);
-	void PrintMonsterAttackLog(int damage);
+	void PrintCharacterStatus(const string& InName, const int& InMaxHp, const int& InLevel, const int& InExp, const int& InDamage, const int& InGold);
+	void PrintMonsterAttackLog(int InDamage);
+	void PrintCharacterAttackLog(int InDamage);
+	void PushConsoleLog(string InString);
 	void PrintCombatLose();
 	void PrintCombatWin();
 	void PrintGameOver();
 	void PrintInventory(const vector<shared_ptr<CRItem>> InItems);
 
+protected:
+	bool IsNumeric(const string& InStr);
+
 private:
 	vector<string> LeftConsole;
 	vector<string> RightConsole;
+
+	int LeftConsoleIndex = 0;
 };
 

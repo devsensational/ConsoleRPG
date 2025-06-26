@@ -12,15 +12,19 @@ using namespace std;
 
 
 CRCharacter::CRCharacter(string name, int health, int attack, const int InUniqueId)
-    : name(name), iHealth(health), iAttack(attack), iMaxHealth(health), iLevel(1), iExperience(0), UniqueId(InUniqueId)
+    : name(name), CurrentHp(health), Damage(attack), MaxHp(health), Level(1), Experience(0), Gold(0), UniqueId(InUniqueId)
 {
     spInventory = make_shared<CRInventory>(this);
     
     EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CharacterAttack, bind(&CRCharacter::Attack, this)));
     EventIds.push_back(Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_InventoryItemSelect, bind(&CRCharacter::useItem, this, placeholders::_1)));
+    EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatWin, bind(&CRCharacter::GetExp, this)));
+    EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatWin, bind(&CRCharacter::GetGold, this)));
     
     Status = EUnitStatus::EUS_Alive;
 
+    Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
+        .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
 }
 
 
@@ -38,42 +42,65 @@ void CRCharacter::useItem(int index)
 
 
 
-void CRCharacter::TakeDamage(int damage) 
+void CRCharacter::TakeDamage(int InDamage) 
 {
-    iHealth = clamp(iHealth - damage, 0, iMaxHealth);
+    CurrentHp = clamp(CurrentHp - InDamage, 0, MaxHp);
     Singleton<CREventManager<string, int, int>>::GetInstance()
-        .Broadcast(EEventType::EET_CharacterStatInit, name, iHealth, iMaxHealth);
-    if (iHealth <= 0) Dead();
+        .Broadcast(EEventType::EET_CharacterCombatStatInit, name, CurrentHp, MaxHp);
+    if (CurrentHp <= 0) Dead();
 }
 
 // HealPosition 사용해서 50 heal회복
-void CRCharacter::takeHealPosition(int heal)
+void CRCharacter::Heal(int InValue)
 {
-    iHealth += heal;
-    if (iHealth < 0) iHealth = 0;
+    CurrentHp += InValue;
+    Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, to_string(InValue) + "의 체력을 회복!");
+    if (CurrentHp < 0) CurrentHp = 0;
 }
 
-void CRCharacter::takeAttackBoost(int attack)
+void CRCharacter::DamageBoost(int InValue)
 {
-    iAttack += attack;
-    if (iAttack < 0) iAttack = 0;
+    Damage += InValue;
+    if (Damage < 0) Damage = 0;
 }
 
-void CRCharacter::levelUp() 
+void CRCharacter::LevelUp() 
 {
-    if (iLevel < 10) 
+    if (Level < 10) 
     {
-        iLevel++;
-        iMaxHealth += iLevel * 20;
-        iAttack += iLevel * 5;
-        iHealth = iMaxHealth;  // 레벨업 시 체력 회복
-        cout << name << " 레벨업! 레벨: " << iLevel << ", 체력: " << iHealth << ", 공격력: " << iAttack << endl;
+        Level++;
+        MaxHp += 20;
+        Damage += 5;
+        CurrentHp = MaxHp;  // 레벨업 시 체력 회복
+        Experience = 0;
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "레벨 업!!! 체력이 회복되었습니다!");
+        //cout << name << " 레벨업! 레벨: " << Level << ", 체력: " << CurrentHp << ", 공격력: " << Damage << endl;
     }
 }
 
-void CRCharacter::showStatus() 
+void CRCharacter::GetExp()
 {
-    cout << name << " - 레벨: " << iLevel << ", 체력: " << iHealth << ", 공격력: " << iAttack << endl;
+    Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "50 경험치 획득!");
+    Experience += 50;
+    if (Experience >= 100) LevelUp();
+    Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
+        .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
+}
+
+void CRCharacter::GetGold()
+{
+    int GoldValue = RandomIndexSelector(10, 20);
+    Gold += GoldValue;
+
+    Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, to_string(GoldValue) + " 골드 획득!");
+    Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
+        .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
+
+}
+
+void CRCharacter::ShowStatus() 
+{
+    cout << name << " - 레벨: " << Level << ", 체력: " << CurrentHp << ", 공격력: " << Damage << endl;
 }
 
 void CRCharacter::Dead()
@@ -88,10 +115,12 @@ void CRCharacter::Act()
 {
     Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_CharacterAct);
 
+    Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
+        .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
     
 }
 
 void CRCharacter::Attack()
 {
-    Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_CharacterAttack, iAttack);
+    Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_CharacterAttack, Damage);
 }
