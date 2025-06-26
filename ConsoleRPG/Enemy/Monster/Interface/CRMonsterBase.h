@@ -37,6 +37,16 @@ private:
     static constexpr EMonsterAttribute DEFAULT_ATTRIBUTE = EMonsterAttribute::EMA_None;
 
 protected:
+<<<<<<< feature/CombatManager
+    std::string Name;   //< 몬스터의 이름
+    int UniqueId;       // 식별용 ID
+    int CurrentHealth;  //< 현재 체력
+    int MaxHealth;      //< 최대 체력
+    int MonsterDamage;  //< 공격력
+
+    EUnitStatus Status = EUnitStatus::EUS_Alive;
+    vector<int> EventIds; // Event Id 저장용
+=======
     std::string Name; //< 몬스터의 이름
     int UniqueId; // 식별용 ID
     int CurrentHealth; //< 현재 체력
@@ -44,6 +54,7 @@ protected:
     int MonsterDamage; //< 공격력
     EMonsterAttribute MonsterAttribute; // < 속성
     
+>>>>>>> dev
 
 public:
     /**
@@ -60,6 +71,9 @@ public:
         MonsterDamage(DEFAULT_DAMAGE),
         MonsterAttribute(DEFAULT_ATTRIBUTE)
     {
+        //EventIds.push_back(Singleton<CREventManager<int>>::GetInstance()
+        //    .Subscribe(EEventType::EET_MonsterTakeDamage, bind(&MonsterBase::TakeDamage, this, placeholders::_1)));
+        Status = EUnitStatus::EUS_Alive;
     }
 
     // @brief 가상 소멸자
@@ -111,16 +125,41 @@ public:
      * @note 음수 데미지는 무시됩니다
      * @note 체력은 0과 최대체력 사이로 제한됩니다
      */
+<<<<<<< feature/CombatManager
+    void TakeDamage(int value) override {
+        CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
+
+        Singleton<CREventManager<string, int, int>>::GetInstance()
+            .Broadcast(EEventType::EET_MonsterCombatStatInit, Name, CurrentHealth, MaxHealth);
+
+        if (CurrentHealth <= 0) Dead();
+
+        //cout << "TakeDamage: " << value << endl;
+        //cout << "CurrentHP: " << CurrentHealth << endl;
+    }
+
+    void Act() override {
+        Attack();
+    }
+=======
     void TakeDamage(int value) override;
+>>>>>>> dev
 
     /**
      * @brief 몬스터의 공격 함수
-     * 
+     *
      * 이벤트 시스템을 통해 캐릭터에게 데미지를 전달합니다.
      * @note EET_CharacterTakeDamage 이벤트를 발생시킵니다
      * @see CREventManager
      */
+<<<<<<< feature/CombatManager
+    void Attack() override
+    {
+        Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterAttack, MonsterDamage);
+    }
+=======
     void Attack() override;
+>>>>>>> dev
     
 
     /**
@@ -131,6 +170,20 @@ public:
      */
     MonsterHealthInfo GetHealthInfo() const noexcept;
 
+<<<<<<< feature/CombatManager
+    void Dead() override
+    {
+        if (Status == EUnitStatus::EUS_Dead) return; // 이미 죽었으면 아무것도 하지 않음
+
+        Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterDead, UniqueId);
+        //Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, Name + "이(가) 쓰러졌다!");
+        //Singleton<CREventManager<int>>::GetInstance().Unsubscribe(EEventType::EET_MonsterTakeDamage, EventIds[0]);
+        Status = EUnitStatus::EUS_Dead;
+    }
+
+    inline int GetUniqueId() override { return UniqueId; }
+    inline EUnitStatus GetUnitStatus() override { return Status; }
+=======
     /**
      * @brief 몬스터의 고유 식별자를 반환합니다.
      *
@@ -138,4 +191,5 @@ public:
      * @note 이 메서드는 예외를 발생시키지 않습니다.
      */
     inline int GetUniqueId() const;
+>>>>>>> dev
 };

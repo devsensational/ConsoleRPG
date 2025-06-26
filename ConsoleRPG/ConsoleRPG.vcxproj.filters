@@ -102,7 +102,7 @@
     <ClCompile Include="CROrangePotion.cpp">
       <Filter>소스 파일\Character</Filter>
     </ClCompile>
-    <ClCompile Include="CRRedPotion.cpp">
+    <ClCompile Include="CRHealthPotion.cpp">
       <Filter>소스 파일\Character</Filter>
     </ClCompile>
     <ClCompile Include="CRRogue.cpp">
@@ -113,6 +113,18 @@
     </ClCompile>
     <ClCompile Include="CRWhitePotion.cpp">
       <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRCombatManager.cpp">
+      <Filter>소스 파일\GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Enum\CRMonsterType.h">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Factory\CRMonsterFactory.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -185,7 +197,7 @@
     <ClInclude Include="CROrangePotion.h">
       <Filter>헤더 파일\Character</Filter>
     </ClInclude>
-    <ClInclude Include="CRRedPotion.h">
+    <ClInclude Include="CRHealthPotion.h">
       <Filter>헤더 파일\Character</Filter>
     </ClInclude>
     <ClInclude Include="CRRogue.h">
@@ -196,6 +208,12 @@
     </ClInclude>
     <ClInclude Include="CRWhitePotion.h">
       <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRCombatManager.h">
+      <Filter>헤더 파일\GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Factory\CRMonsterFactory.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

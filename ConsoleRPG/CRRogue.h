@@ -8,8 +8,8 @@ private:
     int iVigor = 0; //±â·Â
 
 public:
-    CRRogue(string name, int health, int attack, int vigor)
-        : CRCharacter(name, health, attack), iVigor(vigor)
+    CRRogue(string name, int health, int attack, int vigor, int InUniqueId)
+        : CRCharacter(name, health, attack, InUniqueId), iVigor(vigor)
     {
 
     }

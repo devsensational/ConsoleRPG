@@ -7,5 +7,5 @@ using namespace std;
 void CRMage::castSpell()
 {
     // 마법사 특수 능력 (예시)
-    cout << getName() << "이(가) 마법을 시전합니다!" << endl;
+    cout << GetName() << "이(가) 마법을 시전합니다!" << endl;
 }

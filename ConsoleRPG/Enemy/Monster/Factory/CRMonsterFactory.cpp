@@ -17,6 +17,23 @@
  */
 std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monsterType, int level, int uniqueId)
 {
+<<<<<<< feature/CombatManager
+  switch (monsterType)
+  {
+  case EMonsterType::EMT_Troll:
+    return std::make_shared<Troll>(level, uniqueId);
+    
+  case EMonsterType::EMT_Goblin:
+    return std::make_shared<Goblin>(level, uniqueId);
+
+  case EMonsterType::EMT_Orc:
+    return std::make_shared<Orc>(level, uniqueId);
+
+  case EMonsterType::EMT_Slime:
+    return std::make_shared<Slime>(level, uniqueId);
+  
+  default:
+=======
   // 파라미터 유효성 검사
   if (level < 0 || uniqueId < 0) {
     throw std::invalid_argument("Invalid level or uniqueId");
@@ -44,6 +61,7 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
     }
   }catch (const std::bad_alloc& e) {
     // 메모리 할당 실패 처리
+>>>>>>> dev
     return nullptr;
   }
 

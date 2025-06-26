@@ -1,3 +1,6 @@
+<<<<<<< feature/CombatManager
+﻿
+=======
 ﻿#include "CRMonsterBase.h"
 
 std::string MonsterBase::GetName() const noexcept
@@ -36,3 +39,4 @@ int MonsterBase::GetUniqueId() const
 {
     return UniqueId;
 }
+>>>>>>> dev

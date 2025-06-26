@@ -8,5 +8,5 @@ using namespace std;
 void CRWarrior::specialMove()
 {
     // 전사의 특수기능 (예시)
-    cout << getName() << "이(가) 강력한 베기를 사용합니다!" << endl;
+    cout << GetName() << "이(가) 강력한 베기를 사용합니다!" << endl;
 }

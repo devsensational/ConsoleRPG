@@ -5,6 +5,8 @@
 #include "ConsoleRPG.h"
 #include "ICRCombat.h"
 #include "ICRGameMode.h"
+#include "CRCharacter.h"
+#include "CRCombatManager.h"
 
 using namespace std;
 
@@ -23,23 +25,19 @@ public:
 
 	void SetUserName();
 
+protected:
+	void CombatOver();
+	void CombatWin();
+	void CombatLose();
+
 private:
+	shared_ptr<CRCombatManager> CombatManager;
+	shared_ptr<CRCharacter> PlayerCharacter;
+
 	int GameLevel = 0;
 
 	bool bIsGameOver = false;
 	bool bIsCombatOver = false;
-
-	/* 전투 관련 섹션 */
-protected:
-	unique_ptr<vector<shared_ptr<ICRCombat>>> CombatSequence;
-
-public:
-	void CombatInit();
-	void CombatStart();
-	void CombatEnd();
-
-	void CombatWin();
-	void CombatLose();
 
 	/* Getter / Setter */
 public:

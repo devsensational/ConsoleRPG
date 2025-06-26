@@ -131,9 +131,9 @@
     <ClCompile Include="CRActor.cpp" />
     <ClCompile Include="CRAttackBoost.cpp" />
     <ClCompile Include="CRCharacter.cpp" />
+    <ClCompile Include="CRCombatManager.cpp" />
     <ClCompile Include="CRConsoleRenderer.cpp" />
     <ClCompile Include="CRConsoleUI.cpp" />
-    <ClCompile Include="CRGameManager.cpp" />
     <ClCompile Include="CRGameMode.cpp" />
     <ClCompile Include="CRGameSystem.cpp" />
     <ClCompile Include="CRInventory.cpp" />
@@ -144,7 +144,7 @@
     <ClCompile Include="Enemy\Monster\Enum\CRMonsterType.h" />
     <ClCompile Include="Enemy\Monster\Factory\CRMonsterFactory.cpp" />
     <ClCompile Include="CROrangePotion.cpp" />
-    <ClCompile Include="CRRedPotion.cpp" />
+    <ClCompile Include="CRHealthPotion.cpp" />
     <ClCompile Include="CRRogue.cpp" />
     <ClCompile Include="CRWarrior.cpp" />
     <ClCompile Include="CRWhitePotion.cpp" />
@@ -160,10 +160,10 @@
     <ClInclude Include="CRActor.h" />
     <ClInclude Include="CRAttackBoost.h" />
     <ClInclude Include="CRCharacter.h" />
+    <ClInclude Include="CRCombatManager.h" />
     <ClInclude Include="CRConsoleRenderer.h" />
     <ClInclude Include="CRConsoleUI.h" />
     <ClInclude Include="CREventManager.h" />
-    <ClInclude Include="CRGameManager.h" />
     <ClInclude Include="CRGameMode.h" />
     <ClInclude Include="CRGameSystem.h" />
     <ClInclude Include="Enemy\Monster\Boss\CRDragon.h" />
@@ -172,7 +172,7 @@
     <ClInclude Include="CRItem.h" />
     <ClInclude Include="CRMage.h" />
     <ClInclude Include="CROrangePotion.h" />
-    <ClInclude Include="CRRedPotion.h" />
+    <ClInclude Include="CRHealthPotion.h" />
     <ClInclude Include="CRRogue.h" />
     <ClInclude Include="CRWarrior.h" />
     <ClInclude Include="CRWhitePotion.h" />

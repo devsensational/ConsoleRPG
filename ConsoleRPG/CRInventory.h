@@ -13,16 +13,17 @@ class CRInventory
 {
 private:
     vector<shared_ptr<CRItem>> items;
+    CRCharacter* Owner;
 
 public:
-    CRInventory();
+    CRInventory(CRCharacter* target);
 
 
     void addItem(shared_ptr<CRItem> item);
     void showItems();
-    void useItem(int index, CRCharacter* target);
+    void useItem(int index);
     // ·£´ý ¾ÆÀÌÅÛ È¹µæ ÇÔ¼ö
-    void createItem(int index);
+    void CreateItem(int index);
 
 
 };

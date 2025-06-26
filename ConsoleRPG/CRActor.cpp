@@ -13,7 +13,7 @@ CRActor::CRActor()
 }
 
 
-void CRActor::Attack()
+void CRActor::Act()
 {
 	Singleton<CRConsoleRenderer>::GetInstance().AddBuffer(TEXT("Attack!!"));
 }

@@ -7,5 +7,5 @@ using namespace std;
 void CRRogue::stealthAttack()
 {
     // 도적의 특수 능력 (예시)
-    cout << getName() << "이(가) 은신 공격을 합니다!" << endl;
+    cout << GetName() << "이(가) 은신 공격을 합니다!" << endl;
 }
