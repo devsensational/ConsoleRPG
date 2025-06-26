@@ -17,23 +17,6 @@
  */
 std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monsterType, int level, int uniqueId)
 {
-<<<<<<< feature/CombatManager
-  switch (monsterType)
-  {
-  case EMonsterType::EMT_Troll:
-    return std::make_shared<Troll>(level, uniqueId);
-    
-  case EMonsterType::EMT_Goblin:
-    return std::make_shared<Goblin>(level, uniqueId);
-
-  case EMonsterType::EMT_Orc:
-    return std::make_shared<Orc>(level, uniqueId);
-
-  case EMonsterType::EMT_Slime:
-    return std::make_shared<Slime>(level, uniqueId);
-  
-  default:
-=======
   // 파라미터 유효성 검사
   if (level < 0 || uniqueId < 0) {
     throw std::invalid_argument("Invalid level or uniqueId");
@@ -61,7 +44,6 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
     }
   }catch (const std::bad_alloc& e) {
     // 메모리 할당 실패 처리
->>>>>>> dev
     return nullptr;
   }
 
@@ -83,15 +65,11 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonster(EMonsterType monste
  */
 std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonsterByLevel(int level, int uniqueId)
 {
-  if (level <= 0 || level > 10)
+  if (level < 0 || level > 10)
     return nullptr;
 
   try {
-    for (const auto& range : LevelMappings) {
-      if (level >= range.minLevel && level <= range.maxLevel) {
-        return range.creator(level, uniqueId);
-      }
-    }
+      return LevelMappings[level].creator(level, uniqueId);
   } catch (const std::bad_alloc&) {
     return nullptr;
   }
@@ -109,9 +87,9 @@ std::shared_ptr<MonsterBase> CRMonsterFactory::CreateMonsterByLevel(int level, i
  * @see LevelRange
  */
 const std::vector<LevelRange> CRMonsterFactory::LevelMappings = {
-  {1, 2, [](int level, int uniqueId) { return std::make_shared<Slime>(level, uniqueId); }},
-  {3, 5, [](int level, int uniqueId) { return std::make_shared<Goblin>(level, uniqueId); }},
-  {6, 7, [](int level, int uniqueId) { return std::make_shared<Orc>(level, uniqueId); }},
-  {8, 9, [](int level, int uniqueId) { return std::make_shared<Troll>(level, uniqueId); }},
-  {10, 10, [](int level, int uniqueId) { return std::make_shared<Dragon>(level, uniqueId); }}
+  {1, 2, [](int level, int uniqueId) { return std::make_shared<Slime>(level, uniqueId); }}, // 0
+  {3, 5, [](int level, int uniqueId) { return std::make_shared<Goblin>(level, uniqueId); }}, // 1
+  {6, 7, [](int level, int uniqueId) { return std::make_shared<Orc>(level, uniqueId); }}, // 2
+  {8, 9, [](int level, int uniqueId) { return std::make_shared<Troll>(level, uniqueId); }}, // 3
+  {10, 10, [](int level, int uniqueId) { return std::make_shared<Dragon>(level, uniqueId); }} // 4
 };

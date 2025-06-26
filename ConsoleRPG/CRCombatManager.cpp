@@ -43,7 +43,7 @@ void CRCombatManager::CombatInit(const shared_ptr<ICRCombat> Unit, const int InL
 	Singleton<CREventManager<string, int, int>>::GetInstance()
 		.Broadcast(EEventType::EET_CharacterCombatStatInit, Player->GetName(), Player->getHealth(), Player->GetMaxHp());
 
-	shared_ptr<MonsterBase> MonsterTemp = CRMonsterFactory::CreateMonster(EMonsterType::EMT_Goblin, InLevel, 0);
+	shared_ptr<MonsterBase> MonsterTemp = CRMonsterFactory::CreateMonsterByLevel(InLevel, 0);
 	MonsterMap[MonsterTemp->GetUniqueId()] = MonsterTemp;
 	MonsterList.push_back(MonsterTemp);
 	MonsterCount = MonsterMap.size();

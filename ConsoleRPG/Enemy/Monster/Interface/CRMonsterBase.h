@@ -37,7 +37,6 @@ private:
     static constexpr EMonsterAttribute DEFAULT_ATTRIBUTE = EMonsterAttribute::EMA_None;
 
 protected:
-<<<<<<< feature/CombatManager
     std::string Name;   //< 몬스터의 이름
     int UniqueId;       // 식별용 ID
     int CurrentHealth;  //< 현재 체력
@@ -46,15 +45,7 @@ protected:
 
     EUnitStatus Status = EUnitStatus::EUS_Alive;
     vector<int> EventIds; // Event Id 저장용
-=======
-    std::string Name; //< 몬스터의 이름
-    int UniqueId; // 식별용 ID
-    int CurrentHealth; //< 현재 체력
-    int MaxHealth; //< 최대 체력
-    int MonsterDamage; //< 공격력
     EMonsterAttribute MonsterAttribute; // < 속성
-    
->>>>>>> dev
 
 public:
     /**
@@ -125,7 +116,6 @@ public:
      * @note 음수 데미지는 무시됩니다
      * @note 체력은 0과 최대체력 사이로 제한됩니다
      */
-<<<<<<< feature/CombatManager
     void TakeDamage(int value) override {
         CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
 
@@ -141,9 +131,8 @@ public:
     void Act() override {
         Attack();
     }
-=======
-    void TakeDamage(int value) override;
->>>>>>> dev
+
+    //void TakeDamage(int value) override; //
 
     /**
      * @brief 몬스터의 공격 함수
@@ -152,14 +141,13 @@ public:
      * @note EET_CharacterTakeDamage 이벤트를 발생시킵니다
      * @see CREventManager
      */
-<<<<<<< feature/CombatManager
+
     void Attack() override
     {
         Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterAttack, MonsterDamage);
     }
-=======
-    void Attack() override;
->>>>>>> dev
+
+   // void Attack() override; //
     
 
     /**
@@ -170,7 +158,6 @@ public:
      */
     MonsterHealthInfo GetHealthInfo() const noexcept;
 
-<<<<<<< feature/CombatManager
     void Dead() override
     {
         if (Status == EUnitStatus::EUS_Dead) return; // 이미 죽었으면 아무것도 하지 않음
@@ -183,7 +170,6 @@ public:
 
     inline int GetUniqueId() override { return UniqueId; }
     inline EUnitStatus GetUnitStatus() override { return Status; }
-=======
     /**
      * @brief 몬스터의 고유 식별자를 반환합니다.
      *
@@ -191,5 +177,4 @@ public:
      * @note 이 메서드는 예외를 발생시키지 않습니다.
      */
     inline int GetUniqueId() const;
->>>>>>> dev
 };

@@ -1,7 +1,6 @@
-<<<<<<< feature/CombatManager
-﻿
-=======
-﻿#include "CRMonsterBase.h"
+#include "CRMonsterBase.h"
+
+
 
 std::string MonsterBase::GetName() const noexcept
 {
@@ -18,6 +17,7 @@ int MonsterBase::GetMaxMonsterHealth() const noexcept
     return MaxHealth;
 }
 
+/*
 void MonsterBase::TakeDamage(int value)
 {
     CurrentHealth = std::clamp(CurrentHealth - value, 0, MaxHealth);
@@ -34,9 +34,9 @@ MonsterHealthInfo MonsterBase::GetHealthInfo() const noexcept
 {
     return { CurrentHealth, MaxHealth };
 }
+*/
 
 int MonsterBase::GetUniqueId() const
 {
     return UniqueId;
 }
->>>>>>> dev
