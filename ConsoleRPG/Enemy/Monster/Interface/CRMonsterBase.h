@@ -163,8 +163,15 @@ public:
         if (Status == EUnitStatus::EUS_Dead) return; // 이미 죽었으면 아무것도 하지 않음
 
         Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterDead, UniqueId);
-        //Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, Name + "이(가) 쓰러졌다!");
-        //Singleton<CREventManager<int>>::GetInstance().Unsubscribe(EEventType::EET_MonsterTakeDamage, EventIds[0]);
+        
+        // 30% 확률로 아이템 드롭
+        if (RandomIndexSelector(1, 100) <= 30) {
+            // 랜덤 아이템 인덱스 생성 (1: 체력 포션, 2: 공격력 증가 스크롤)
+            int itemIndex = RandomIndexSelector(1, 2);
+            Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_MonsterRandomDrop, itemIndex);
+            Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, Name + "이(가) 아이템을 떨어뜨렸다!");
+        }
+        
         Status = EUnitStatus::EUS_Dead;
     }
 
