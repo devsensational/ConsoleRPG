@@ -50,7 +50,20 @@ void CRGameMode::GameStart()
 
 void CRGameMode::SetUserName()
 {
-	getline(cin, UserName);
+	bool validInput = false;
+	while (!validInput)
+	{
+		getline(cin, UserName);
+		// 입력이 비어있거나 공백만 있는 경우 재입력 요청
+		if (UserName.empty() || UserName.find_first_not_of(' ') == string::npos)
+		{
+			cout << "유효한 이름을 입력해주세요: ";
+		}
+		else
+		{
+			validInput = true;
+		}
+	}
 }
 
 void CRGameMode::CombatOver()
