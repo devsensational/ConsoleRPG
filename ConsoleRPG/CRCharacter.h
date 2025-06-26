@@ -12,10 +12,10 @@ using namespace std;
 class CRCharacter : public ICRCombat
 {
 private:
-    // ÀÎº¥Åä¸®¸¦ °¡¸£Å³ ¼ö ÀÖ´Â ½¦¾îµåÆ÷ÀÎÅÍ¸¦ Ä³¸¯ÅÍ°¡ µé°í ÀÖ´Â ÇüÅÂ
-    shared_ptr<CRInventory> spInventory;
+    // ï¿½Îºï¿½ï¿½ä¸®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Å³ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ Ä³ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
+    shared_ptr<CRInventory> Inventory;
 
-    // ÀÌº¥Æ® ¸®½ºÅÍ ID ÀúÀå
+    // ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ID ï¿½ï¿½ï¿½ï¿½
     int iListenerID = 0;
     int UniqueId = 0;
     vector<int> EventIds;
@@ -52,12 +52,15 @@ public:
     int getAttack() const { return Damage; }
     inline int GetMaxHp() const { return MaxHp; }
 
-    // ICRCombatÀ»(¸¦) ÅëÇØ »ó¼ÓµÊ
+    // ICRCombatï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Óµï¿½
     void Act() override;
     void Attack() override;
 
 
-    // ICRCombatÀ»(¸¦) ÅëÇØ »ó¼ÓµÊ
+    // ICRCombatï¿½ï¿½(ï¿½ï¿½) ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Óµï¿½
     inline int GetUniqueId() override { return UniqueId; }
     inline EUnitStatus GetUnitStatus() override { return Status; }
+
+    // ì•„ì´í…œ êµ¬ë§¤ í•¨ìˆ˜ ì¶”ê°€
+    void BuyItem(int itemIndex, int price);
 };

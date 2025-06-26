@@ -1,4 +1,4 @@
-#include "CRInventory.h"
+﻿#include "CRInventory.h"
 #include "CRCharacter.h"
 
 #include "CRHealthPotion.h"
@@ -18,8 +18,6 @@ CRInventory::CRInventory(CRCharacter* target)
     Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_InventoryOpen, bind(&CRInventory::showItems, this));
     Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_StoreItemSelect, bind(&CRInventory::CreateItem, this, placeholders::_1));
 
-    
-    CreateItem(1);
 }
 
 void CRInventory::addItem(shared_ptr<CRItem> item)
@@ -37,9 +35,18 @@ void CRInventory::useItem(int index)
 {
     if (index >= 0 && index < items.size()) 
     {
-        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "�������� ����߽��ϴ�!");
+        // 디버깅 로그 추가
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, 
+            "아이템 사용: " + items[index]->getName());
+        
         items[index]->use(Owner);
         items.erase(items.begin() + index);
+    }
+    else
+    {
+        // 인덱스 오류 로그 추가
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, 
+            "오류: 잘못된 아이템 인덱스 - " + to_string(index));
     }
 }
 
@@ -49,20 +56,14 @@ void CRInventory::CreateItem(int index)
     {
     case 1: 
         addItem(make_shared<CRHealthPotion>("RedPotion", 20));
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "체력 포션을 획득했습니다!");
         break;
     case 2: 
-        addItem(make_shared<CRHealthPotion>("OrangePotion", 20));
-        break;
-    case 3: 
-        addItem(make_shared<CRHealthPotion>("WhitePotion", 20));
-        break;
-    case 4: 
         addItem(make_shared<CRAttackBoost>("AttackBoost", 20));
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "공격력 증가 스크롤을 획득했습니다!");
         break;
     default:
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "알 수 없는 아이템 인덱스: " + to_string(index));
         break;
     }
- 
-
-        
 }

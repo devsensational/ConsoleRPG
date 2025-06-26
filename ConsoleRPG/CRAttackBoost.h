@@ -4,7 +4,7 @@
 class CRAttackBoost : public CRItem {
 private:
     string strAttackBoost = "Attack Boost";
-    int defaultHealAmount = 0; 
+    int defaultHealAmount = 20; 
 
 
 public:

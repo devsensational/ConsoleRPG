@@ -12,14 +12,16 @@ using namespace std;
 
 
 CRCharacter::CRCharacter(string name, int health, int attack, const int InUniqueId)
-    : name(name), CurrentHp(health), Damage(attack), MaxHp(health), Level(1), Experience(0), Gold(0), UniqueId(InUniqueId)
+    : name(name), CurrentHp(health), Damage(attack), MaxHp(health), Level(1), Experience(0), Gold(100), UniqueId(InUniqueId)
 {
-    spInventory = make_shared<CRInventory>(this);
+    Inventory = make_shared<CRInventory>(this);
     
     EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CharacterAttack, bind(&CRCharacter::Attack, this)));
     EventIds.push_back(Singleton<CREventManager<int>>::GetInstance().Subscribe(EEventType::EET_InventoryItemSelect, bind(&CRCharacter::useItem, this, placeholders::_1)));
     EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatWin, bind(&CRCharacter::GetExp, this)));
     EventIds.push_back(Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_CombatWin, bind(&CRCharacter::GetGold, this)));
+    EventIds.push_back(Singleton<CREventManager<int, int>>::GetInstance().Subscribe(EEventType::EET_StoreItemBuy, 
+        bind(&CRCharacter::BuyItem, this, placeholders::_1, placeholders::_2)));
     
     Status = EUnitStatus::EUS_Alive;
 
@@ -32,12 +34,12 @@ CRCharacter::CRCharacter(string name, int health, int attack, const int InUnique
 // 인벤토리를 가져오는 함수
 shared_ptr<CRInventory>CRCharacter::getInventory()
 {
-    return spInventory;
+    return Inventory;
 }
 // 캐릭터가 몇번째 인덱스에 있는 아이템을 사용할것인지에 대한 함수
 void CRCharacter::useItem(int index)
 {
-    spInventory->useItem(index);
+    Inventory->useItem(index);
 }
 
 
@@ -50,7 +52,7 @@ void CRCharacter::TakeDamage(int InDamage)
     if (CurrentHp <= 0) Dead();
 }
 
-// HealPosition 사용해서 50 heal회복
+// 캐릭터의 체력을 회복
 void CRCharacter::Heal(int InValue)
 {
     CurrentHp += InValue;
@@ -61,7 +63,7 @@ void CRCharacter::Heal(int InValue)
 void CRCharacter::DamageBoost(int InValue)
 {
     Damage += InValue;
-    if (Damage < 0) Damage = 0;
+    Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, to_string(InValue) + "의 데미지 상승!");
 }
 
 void CRCharacter::LevelUp() 
@@ -74,7 +76,6 @@ void CRCharacter::LevelUp()
         CurrentHp = MaxHp;  // 레벨업 시 체력 회복
         Experience = 0;
         Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "레벨 업!!! 체력이 회복되었습니다!");
-        //cout << name << " 레벨업! 레벨: " << Level << ", 체력: " << CurrentHp << ", 공격력: " << Damage << endl;
     }
 }
 
@@ -123,4 +124,31 @@ void CRCharacter::Act()
 void CRCharacter::Attack()
 {
     Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_CharacterAttack, Damage);
+}
+
+void CRCharacter::BuyItem(int itemIndex, int price)
+{
+    // 골드가 충분한지 확인
+    if (Gold >= price) {
+        Gold -= price;
+        
+        // 아이템 생성 이벤트 발생
+        Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_StoreItemSelect, itemIndex);
+        
+        // 로그 메시지 출력
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, 
+            to_string(price) + " 골드를 지불하고 아이템을 구매했습니다!");
+        
+        // 캐릭터 상태 업데이트
+        Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
+            .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
+    }
+    else {
+        // 골드 부족 메시지 출력
+        Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, 
+            "골드가 부족합니다!");
+        
+        // 구매 실패 이벤트 발생
+        Singleton<CREventManager<>>::GetInstance().Broadcast(EEventType::EET_StoreItemBuyFailed);
+    }
 }

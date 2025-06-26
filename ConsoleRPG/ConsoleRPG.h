@@ -29,6 +29,8 @@ enum EEventType
 	EET_CharacterStatInit,			// 캐릭터 정보를 불러올 때 호출
 	EET_PushLog,					// 로그를 출력해야할 때 호출
 	EET_GameOver,					// 게임 종료시 호출
+	EET_StoreItemBuy,				// 상점에서 아이템 구매 시도할 때 호출
+	EET_StoreItemBuyFailed,			// 상점에서 아이템 구매 실패했을 때 호출
 	EET_END = 99,
 };
 

@@ -40,6 +40,9 @@ CRConsoleUI::CRConsoleUI()
 		.Subscribe(EEventType::EET_CharacterStatInit,
 			bind(&CRConsoleUI::PrintCharacterStatus, this, placeholders::_1, placeholders::_2, placeholders::_3, placeholders::_4, placeholders::_5, placeholders::_6));
 
+	// 상점 구매 실패 이벤트 구독 추가
+	Singleton<CREventManager<>>::GetInstance().Subscribe(EEventType::EET_StoreItemBuyFailed, 
+		bind(&CRConsoleUI::PrintStoreMenu, this));
 	
 	// 콘솔 사이즈 초기화
 	LeftConsole.resize(LEFTCONSOLE_DEFAULT);
@@ -100,12 +103,17 @@ void CRConsoleUI::PrintInventory(const vector<shared_ptr<CRItem>> InItems)
 		{
 			cout << i + 1 << ". " << InItems[i]->getName() << '\n';
 		}
-		cout << "아이템을 선택해주세요: ";
+		cout << "아이템을 선택해주세요 (0: 취소): ";
 		cin >> Select;
 
-		if(IsNumeric(Select)) Index = stoi(Select);
+		if (Select == "0") {
+			PrintCombatMenu();
+			return;
+		}
 
-		if (Index > InItems.size() || Index < 1)
+		if(IsNumeric(Select)) Index = stoi(Select) - 1; // 1부터 시작하는 UI 인덱스를 0부터 시작하는 배열 인덱스로 변환
+
+		if (Index >= InItems.size() || Index < 0)
 		{
 			cout << "잘못 입력하셨습니다" << '\n';
 		}
@@ -116,6 +124,10 @@ void CRConsoleUI::PrintInventory(const vector<shared_ptr<CRItem>> InItems)
 		}
 	}
 
+	// 디버깅 로그 추가
+	Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, 
+		"선택한 아이템 인덱스: " + to_string(Index));
+	
 	Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_InventoryItemSelect, Index);
 }
 
@@ -132,7 +144,6 @@ bool CRConsoleUI::IsNumeric(const string& InStr)
 
 void CRConsoleUI::PrintStoreMenu()
 {
-
 	bool Exit = false;
 	string EnterStore;
 	cout << "상점에 입장 하시겠습니까? (Y/N) 잘못 입력 시 이용할 수 없습니다: ";
@@ -142,26 +153,34 @@ void CRConsoleUI::PrintStoreMenu()
 	else return;
 
 	string Select;
+	int itemPrice = 0;
+	
 	while (!Exit)
 	{
 		cout << "상점" << '\n';
-		cout << "1. 랜덤 포션" << '\n';
-		cout << "2. 랜덤 스크롤" << '\n';
-		cout << "상점 메뉴를 선택해주세요: ";
+		cout << "1. 포션 (50 골드)" << '\n';
+		cout << "2. 공격력 증가 스크롤 (100 골드)" << '\n';
+		cout << "상점 메뉴를 선택해주세요 (0: 취소): ";
 		cin >> Select;
 
-		if (Select == "1" || Select == "2")
-		{
+		if (Select == "0") {
+			return;
+		}
+		else if (Select == "1") {
+			itemPrice = 50;
 			Exit = true;
 		}
-		else
-		{
+		else if (Select == "2") {
+			itemPrice = 100;
+			Exit = true;
+		}
+		else {
 			cout << "잘못 입력하셨습니다" << '\n';
 		}
 	}
 
-	//Todo: 랜덤한 숫자 들어가도록 변경
-	Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_StoreItemSelect, stoi(Select));
+	// 구매 시도 이벤트 발생 (아이템 인덱스와 가격 전달)
+	Singleton<CREventManager<int, int>>::GetInstance().Broadcast(EEventType::EET_StoreItemBuy, stoi(Select), itemPrice);
 }
 
 void CRConsoleUI::PrintCombatUI()
