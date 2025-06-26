@@ -47,7 +47,7 @@ void CRGameMode::GameStart()
 
 void CRGameMode::SetUserName()
 {
-	cin >> UserName;
+	getline(cin, UserName);
 }
 
 void CRGameMode::CombatOver()

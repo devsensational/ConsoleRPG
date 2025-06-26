@@ -1,7 +1,7 @@
 ﻿#include "CRGoblin.h"
 #include "../../../Singleton.h"
 
-Goblin::Goblin(int level, int uniqueId) : MonsterBase("고블린", uniqueId) 
+Goblin::Goblin(int level, int uniqueId) : MonsterBase("Goblin", uniqueId) 
 {
 	CurrentHealth = 70 + level * 10;
 	MonsterDamage = 8 + level * 3;

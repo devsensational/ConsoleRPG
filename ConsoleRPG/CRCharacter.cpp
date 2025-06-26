@@ -57,6 +57,9 @@ void CRCharacter::Heal(int InValue)
 {
     CurrentHp += InValue;
     Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, to_string(InValue) + "의 체력을 회복!");
+
+    Singleton<CREventManager<string, int, int>>::GetInstance()
+        .Broadcast(EEventType::EET_CharacterCombatStatInit, name, CurrentHp, MaxHp);
     if (CurrentHp < 0) CurrentHp = 0;
 }
 
@@ -75,6 +78,11 @@ void CRCharacter::LevelUp()
         Damage += 5;
         CurrentHp = MaxHp;  // 레벨업 시 체력 회복
         Experience = 0;
+        Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
+            .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
+
+        Singleton<CREventManager<string, int, int>>::GetInstance()
+            .Broadcast(EEventType::EET_CharacterCombatStatInit, name, CurrentHp, MaxHp);
         Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, "레벨 업!!! 체력이 회복되었습니다!");
     }
 }
@@ -93,9 +101,9 @@ void CRCharacter::GetGold()
     int GoldValue = RandomIndexSelector(10, 20);
     Gold += GoldValue;
 
-    Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, to_string(GoldValue) + " 골드 획득!");
     Singleton<CREventManager<string, int, int, int, int, int>>::GetInstance()
         .Broadcast(EEventType::EET_CharacterStatInit, name, MaxHp, Level, Experience, Damage, Gold);
+    Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, to_string(GoldValue) + " 골드 획득!");
 
 }
 

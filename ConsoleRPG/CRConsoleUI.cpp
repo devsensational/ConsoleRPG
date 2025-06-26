@@ -128,6 +128,7 @@ void CRConsoleUI::PrintInventory(const vector<shared_ptr<CRItem>> InItems)
 	Singleton<CREventManager<string>>::GetInstance().Broadcast(EEventType::EET_PushLog, 
 		"선택한 아이템 인덱스: " + to_string(Index));
 	
+	PrintCombatUI();
 	Singleton<CREventManager<int>>::GetInstance().Broadcast(EEventType::EET_InventoryItemSelect, Index);
 }
 
@@ -179,6 +180,7 @@ void CRConsoleUI::PrintStoreMenu()
 		}
 	}
 
+	PrintCombatUI();
 	// 구매 시도 이벤트 발생 (아이템 인덱스와 가격 전달)
 	Singleton<CREventManager<int, int>>::GetInstance().Broadcast(EEventType::EET_StoreItemBuy, stoi(Select), itemPrice);
 }

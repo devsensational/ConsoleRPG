@@ -12,11 +12,8 @@ using namespace std;
 class CRCharacter : public ICRCombat
 {
 private:
-    // �κ��丮�� ����ų �� �ִ� ����������͸� ĳ���Ͱ� ��� �ִ� ����
     shared_ptr<CRInventory> Inventory;
 
-    // �̺�Ʈ ������ ID ����
-    int iListenerID = 0;
     int UniqueId = 0;
     vector<int> EventIds;
 
@@ -52,12 +49,9 @@ public:
     int getAttack() const { return Damage; }
     inline int GetMaxHp() const { return MaxHp; }
 
-    // ICRCombat��(��) ���� ��ӵ�
     void Act() override;
     void Attack() override;
-
-
-    // ICRCombat��(��) ���� ��ӵ�
+    
     inline int GetUniqueId() override { return UniqueId; }
     inline EUnitStatus GetUnitStatus() override { return Status; }
 
