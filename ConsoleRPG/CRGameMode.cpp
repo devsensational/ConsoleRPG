@@ -69,4 +69,3 @@ void CRGameMode::CombatLose()
 	CombatOver();
 	bIsGameOver = true;
 }
-
