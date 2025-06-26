@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" addBOMForNewFiles="with BOM under Windows, with no BOM otherwise">
+    <file url="file://$PROJECT_DIR$/CRAttackBoost.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/CRCharacter.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/CRCombatManager.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/CRCombatManager.h" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/CREventManager.cpp" charset="UTF-16" />
     <file url="file://$PROJECT_DIR$/CREventManager.h" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/CRGameMode.cpp" charset="x-windows-949" />
+    <file url="file://$PROJECT_DIR$/CRInventory.h" charset="x-windows-949" />
     <file url="file://$PROJECT_DIR$/Singleton.h" charset="UTF-16" />
   </component>
 </project>

@@ -37,6 +37,18 @@
     <Filter Include="헤더 파일\Renderers">
       <UniqueIdentifier>{85cf12e7-5529-4d76-882e-dead6739ff7a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Game">
+      <UniqueIdentifier>{57ce92c8-608d-44af-944c-ad2488527cb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Game">
+      <UniqueIdentifier>{70cc6545-a2aa-47d7-a3ab-fab199c333bc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\Character">
+      <UniqueIdentifier>{5a41ac74-6591-4a7b-aec0-6bdb4936d83e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Character">
+      <UniqueIdentifier>{765a3190-eb8f-4620-9db0-6f6f1850e1ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="CRMain.cpp">
@@ -45,17 +57,74 @@
     <ClCompile Include="CRGameSystem.cpp">
       <Filter>소스 파일\GameManagers</Filter>
     </ClCompile>
-    <ClCompile Include="CRGameManager.cpp">
-      <Filter>소스 파일\GameManagers</Filter>
-    </ClCompile>
     <ClCompile Include="CRActor.cpp">
       <Filter>소스 파일\Actors</Filter>
+    </ClCompile>
+    <ClCompile Include="CRConsoleRenderer.cpp">
+      <Filter>소스 파일\Renderers</Filter>
+    </ClCompile>
+    <ClCompile Include="CRGameMode.cpp">
+      <Filter>소스 파일\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Goblin\CRGoblin.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Interface\CRMonsterBase.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Orc\CROrc.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Slime\CRSlime.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Troll\Troll.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="CRConsoleUI.cpp">
       <Filter>소스 파일\Renderers</Filter>
     </ClCompile>
-    <ClCompile Include="CRConsoleRenderer.cpp">
-      <Filter>소스 파일\Renderers</Filter>
+    <ClCompile Include="CRAttackBoost.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRCharacter.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRInventory.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRItem.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRMage.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CROrangePotion.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRHealthPotion.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRRogue.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRWarrior.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="CRWhitePotion.cpp">
+      <Filter>소스 파일\Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="CRCombatManager.cpp">
+      <Filter>소스 파일\GameManagers</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Enum\CRMonsterType.h">
+      <Filter>헤더 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemy\Monster\Factory\CRMonsterFactory.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -63,9 +132,6 @@
       <Filter>헤더 파일\Utilities</Filter>
     </ClInclude>
     <ClInclude Include="CREventManager.h">
-      <Filter>헤더 파일\GameManagers</Filter>
-    </ClInclude>
-    <ClInclude Include="CRGameManager.h">
       <Filter>헤더 파일\GameManagers</Filter>
     </ClInclude>
     <ClInclude Include="CRGameSystem.h">
@@ -85,6 +151,69 @@
     </ClInclude>
     <ClInclude Include="CRConsoleRenderer.h">
       <Filter>헤더 파일\Renderers</Filter>
+    </ClInclude>
+    <ClInclude Include="CRGameMode.h">
+      <Filter>헤더 파일\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="ICRGameMode.h">
+      <Filter>헤더 파일\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Goblin\CRGoblin.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Interface\CRMonsterBase.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Interface\IMonster.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Orc\CROrc.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Slime\CRSlime.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Struct\CRMonsterHealthInfo.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Troll\Troll.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="CRAttackBoost.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRCharacter.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRInventory.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRItem.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRMage.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CROrangePotion.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRHealthPotion.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRRogue.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRWarrior.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRWhitePotion.h">
+      <Filter>헤더 파일\Character</Filter>
+    </ClInclude>
+    <ClInclude Include="CRCombatManager.h">
+      <Filter>헤더 파일\GameManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemy\Monster\Factory\CRMonsterFactory.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,16 +1,21 @@
 #pragma once
+#include "ConsoleRPG.h"
 
 //Interface
 // 
-// MonsterBase¶û CharacterBase¿¡ ÇØ´ç ÀÎÅÍÆäÀÌ½º¸¦ Àû¿ëÇØ¼­ ¸¸µå½Ã¸é µË´Ï´Ù.
+// MonsterBaseë‘ CharacterBaseì— í•´ë‹¹ ì¸í„°í˜ì´ìŠ¤ë¥¼ ì ìš©í•´ì„œ ë§Œë“œì‹œë©´ ë©ë‹ˆë‹¤.
 class ICRCombat
 {
 protected:
 	ICRCombat() = default;
 
 public:
-	virtual void Attack() = 0;
+	virtual void Act() = 0;
 	virtual void TakeDamage(int value) = 0;
+	virtual void Dead() = 0;
+	virtual void Attack() = 0;
+	virtual int GetUniqueId() = 0;
+	virtual EUnitStatus GetUnitStatus() = 0;
 
 	virtual ~ICRCombat() = default;
 };
